@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  width: 95vw;
+  max-width: 1150px;
+  margin: 0;
+}
+
+.image {
+  width: 50%;
+  height: 100%;
+  margin-right: 25px;
+}
+
+.mobileImage {
+  display: none;
+}
+
+.textContainer {
+  margin-left: 25px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-family: visbyRoundCF;
+  font-weight: 600;
+  color: black;
+}
+
+@media only screen and (max-width: 750px) {
+  .container {
+    display: block;
+  }
+
+  .image {
+    display: none;
+  }
+
+  .mobileImage {
+    display: block;
+    width: 80%;
+    margin: 25px auto 0 auto;
+  }
+
+  .textContainer {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .title {
+    text-align: center;
+  }
+}

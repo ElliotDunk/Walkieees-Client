@@ -1,0 +1,104 @@
+.container {
+  width: 100vw;
+  max-width: 100%;
+  height: 400px;
+  background-color: #282cdd;
+}
+
+.innerContainer {
+  display: flex;
+  width: 95vw;
+  height: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.leftContainer {
+  width: 50%;
+  vertical-align: middle;
+  margin: auto 25px auto 0;
+}
+
+.rightContainer {
+  width: 50%;
+  max-width: 450px;
+  margin: auto 0 auto 25px;
+}
+
+.title {
+  height: 100%;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: visbyRoundCF;
+  font-weight: 700;
+}
+
+.title u {
+  font-family: visbyRoundCF;
+  font-weight: 700;
+}
+
+.image {
+  position: absolute;
+  height: 600px;
+  transform: translateY(-375px) translateX(70vw);
+  z-index: -10;
+}
+
+@media only screen and (max-width: 1200px) {
+  .image {
+    height: 500px;
+    transform: translateY(-270px) translateX(72vw);
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .image {
+    height: 350px;
+    transform: translateY(-160px) translateX(77vw);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .container {
+    height: 100%;
+  }
+
+  .innerContainer {
+    display: block;
+  }
+
+  .title {
+    width: 80vw;
+    margin: 25px 0 40px 0;
+  }
+
+  .leftContainer {
+    width: 80vw;
+    margin: 0 auto;
+  }
+
+  .rightContainer {
+    width: 80vw;
+    margin: 0 auto 0 auto;
+    padding-bottom: 25px;
+  }
+
+  .image {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .rightContainer {
+    width: 90vw;
+  }
+}

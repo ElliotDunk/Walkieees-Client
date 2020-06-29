@@ -1,0 +1,14 @@
+.container {
+  width: 95vw;
+  max-width: 1150px;
+  margin: 0 auto;
+  font-family: VisbyRoundCF !important;
+  padding-top: 125px;
+  padding-bottom: 25px;
+}
+
+.container h1 {
+  font-family: VisbyRoundCF;
+  font-weight: 300;
+  color: black;
+}

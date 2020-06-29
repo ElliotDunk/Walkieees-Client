@@ -1,0 +1,66 @@
+.container {
+  width: 100vw;
+  max-width: 100%;
+  background-color: #282cdd;
+  color: white;
+  padding-top: 25px;
+}
+
+.upperContainer {
+  display: block;
+  justify-content: space-between;
+  width: 95vw;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.innerContainer {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+}
+
+.subscriptionContainer {
+  padding-top: 75px;
+}
+
+.emailContainer {
+  display: flex;
+}
+
+.envelope {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.spacer {
+  width: 50px;
+  height: 20px;
+}
+
+.infoText {
+  margin: 5px 0;
+  max-width: 250px;
+}
+
+.title {
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+.unorderedList {
+  padding: 0;
+}
+
+.listItem {
+  list-style: none;
+  padding: 5px 0;
+  color: white;
+}
+
+.anchor {
+  text-decoration: none;
+}

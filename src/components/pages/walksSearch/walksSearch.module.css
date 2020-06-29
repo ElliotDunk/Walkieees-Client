@@ -1,0 +1,13 @@
+.container {
+  width: 95vw;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.upperContainer {
+  margin: 0 10px;
+}
+
+.walksNumber {
+  margin: 25px 0 10px 0;
+}

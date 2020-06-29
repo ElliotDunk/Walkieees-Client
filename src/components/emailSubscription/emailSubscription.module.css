@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  height: 35px;
+  background-color: white;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+.envelope {
+  width: 15px;
+  margin: 0 auto;
+}
+
+.input {
+  width: 85%;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}

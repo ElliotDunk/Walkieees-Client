@@ -1,0 +1,30 @@
+.line {
+  width: 95vw;
+  max-width: 1150px;
+}
+
+.socialMediaContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  width: 175px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.socialMediaBtn {
+  height: 40px;
+}
+
+.anchor {
+  text-decoration: none;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  font-weight: 100;
+}
+
+.lowerContainer {
+  padding-bottom: 5px;
+}

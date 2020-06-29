@@ -1,0 +1,45 @@
+.container {
+  display: inline-flex;
+  height: 28px;
+  background-color: white;
+  border: #282cdd 1px solid;
+  border-radius: 3px;
+  padding: 0 10px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.text {
+  margin: 4px 0;
+  color: #282cdd;
+  font-weight: 400;
+  padding-right: 2px;
+  font-size: 0.9rem;
+}
+
+.arrowContainer {
+  width: 15px;
+  height: 15px;
+  padding-left: 2px;
+  padding-top: 6px;
+}
+
+.dropDownContainer {
+  position: absolute;
+  z-index: 20;
+  margin-top: 5px;
+  width: auto;
+  height: auto;
+  background-color: white;
+  border: #282cdd 1px solid;
+  border-radius: 3px;
+  text-align: center;
+  color: #282cdd;
+}
+
+.dropDownText {
+  font-weight: 400;
+  margin: 10px;
+  cursor: pointer;
+  user-select: none;
+}

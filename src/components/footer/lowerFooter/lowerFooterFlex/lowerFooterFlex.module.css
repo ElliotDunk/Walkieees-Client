@@ -1,0 +1,40 @@
+.line {
+  width: 95vw;
+  max-width: 1150px;
+}
+
+.table {
+  width: 81vw;
+  max-width: 1155px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.tableContainer {
+  width: 33.3%;
+  padding: 0;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.socialMediaContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  width: 175px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.socialMediaBtn {
+  height: 40px;
+}
+
+.anchor {
+  text-decoration: none;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  font-weight: 100;
+}

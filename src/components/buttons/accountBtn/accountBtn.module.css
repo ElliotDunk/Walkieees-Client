@@ -1,0 +1,19 @@
+.a {
+  text-decoration: none;
+}
+
+.span {
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.accountBtnContainer {
+  display: flex;
+  width: 92px;
+}
+
+.logoContainer {
+  margin-left: 10px;
+  width: 25px;
+  height: auto;
+}

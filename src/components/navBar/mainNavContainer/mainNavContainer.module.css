@@ -1,0 +1,44 @@
+.container {
+  width: 100vw;
+  height: 75px;
+  border-bottom: #d8d8d8 1px solid;
+  border-left: none;
+  border-right: none;
+  background-color: white;
+  position: absolute;
+  z-index: 20;
+}
+
+.innerContainer {
+  width: 95vw;
+  max-width: 800px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.searchBarContainer {
+  width: 95vw;
+  height: 50px;
+}
+
+.logo {
+  text-decoration: none;
+  margin-right: 50px;
+}
+
+.accountBtnContainer {
+  margin-left: 50px;
+}
+
+@media only screen and (max-width: 750px) {
+  .logo {
+    display: none;
+  }
+
+  .accountBtnContainer {
+    display: none;
+  }
+}

@@ -1,0 +1,21 @@
+.container form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dropDownContainer {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.textInput {
+  margin-right: 10px;
+  margin-bottom: 5px;
+  border: #282cdd 1px solid;
+  border-radius: 3px;
+  height: 25px;
+}
+
+.textInput::placeholder {
+  padding-left: 2px;
+}

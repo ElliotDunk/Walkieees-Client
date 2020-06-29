@@ -1,0 +1,51 @@
+.linkContainer {
+  text-decoration: none;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image {
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-family: VisbyroundCF;
+  font-weight: 500;
+  color: black;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.bookmark {
+  min-width: 15px;
+  min-height: 15px;
+  margin: 2px 0 0 10px;
+}
+
+.location {
+  overflow: hidden;
+  margin: 5px 0 0 0;
+  color: black;
+  white-space: nowrap;
+}
+
+.ratingContainer {
+  margin: 5px 0 0 0;
+}
+
+.description {
+  width: 100%;
+  height: 60px;
+  overflow-y: hidden;
+  color: black;
+  margin: 5px 0 0 0;
+}

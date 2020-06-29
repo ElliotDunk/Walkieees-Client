@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: "VisbyRoundCF";
+  src: url("./assets/fonts/visbyRoundCF/VisbyRoundCF-ExtraLight.otf") format("opentype");
+  font-weight: 100;
+  letter-spacing: 1px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: "VisbyRoundCF";
+  src: url("./assets/fonts/visbyRoundCF/VisbyRoundCF-Light.otf") format("opentype");
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  font-family: "VisbyRoundCF";
+  src: url("./assets/fonts/visbyRoundCF/VisbyRoundCF-Regular.otf") format("opentype");
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
-.App-header {
-  background-color: #282c34;
+@font-face {
+  font-family: "VisbyRoundCF";
+  src: url("./assets/fonts/visbyRoundCF/VisbyRoundCF-Medium.otf") format("opentype");
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+@font-face {
+  font-family: "VisbyRoundCF";
+  src: url("./assets/fonts/visbyRoundCF/VisbyRoundCF-DemiBold.otf") format("opentype");
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+@font-face {
+  font-family: "VisbyRoundCF";
+  src: url("./assets/fonts/visbyRoundCF/VisbyRoundCF-Bold.otf") format("opentype");
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+@font-face {
+  font-family: "VisbyRoundCF";
+  src: url("./assets/fonts/visbyRoundCF/VisbyRoundCF-ExtraBold.otf") format("opentype");
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+@font-face {
+  font-family: "VisbyRoundCF";
+  src: url("./assets/fonts/visbyRoundCF/VisbyRoundCF-Heavy.otf") format("opentype");
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+@font-face {
+  font-family: "KaushanScript";
+  src: url("./assets/fonts/kaushanScript/KaushanScript-Regular.ttf") format("truetype");
+}
+
+body {
+  overflow-x: hidden;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+* {
+  -webkit-tap-highlight-color: transparent;
 }

@@ -1,0 +1,20 @@
+.container {
+  min-width: 150px;
+  user-select: none;
+}
+
+.btn {
+  min-width: 150px;
+  height: 30px;
+  padding: 0 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.anchor {
+  display: inline-block;
+}

@@ -1,0 +1,71 @@
+.navHeader {
+  width: 100vw;
+  max-width: 100%;
+  height: 20px;
+  background-color: #282cdd;
+  margin: 0;
+  padding: 0;
+  z-index: 20;
+}
+
+.orderedList {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.listItem {
+  list-style: none;
+  padding: 0 20px;
+}
+
+.anchor {
+  color: white;
+  text-decoration: none;
+  font-family: VisbyRoundCF;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.mobileNavHeader {
+  display: none;
+  width: 95vw;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.mobileNavHeadInnerContainer {
+  display: flex;
+}
+
+.menuBtn {
+  width: 25px;
+  height: 25px;
+  margin: 5px 0 0 0;
+}
+
+.logo {
+  margin-left: 5px;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+}
+
+.accountBtnContainer {
+  margin: 4px 0 0 0;
+}
+
+@media only screen and (max-width: 750px) {
+  .navHeader {
+    height: 35px;
+  }
+
+  .orderedList {
+    display: none;
+  }
+
+  .mobileNavHeader {
+    display: flex;
+  }
+}

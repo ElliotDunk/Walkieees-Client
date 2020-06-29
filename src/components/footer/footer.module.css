@@ -1,0 +1,39 @@
+.footerLarge {
+  display: block;
+}
+
+.footerMedium {
+  display: none;
+}
+
+.footerSmall {
+  display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  .footerLarge {
+    display: none;
+  }
+
+  .footerMedium {
+    display: block;
+  }
+
+  .footerSmall {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .footerLarge {
+    display: none;
+  }
+
+  .footerMedium {
+    display: none;
+  }
+
+  .footerSmall {
+    display: block;
+  }
+}
