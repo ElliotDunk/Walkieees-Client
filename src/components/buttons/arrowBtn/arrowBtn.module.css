@@ -1,0 +1,14 @@
+.container {
+  width: 35px;
+  height: 25px;
+  background-color: #282cdd;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.arrow {
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+  padding-top: 4px;
+}

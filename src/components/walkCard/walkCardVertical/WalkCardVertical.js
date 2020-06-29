@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import haversineFormula from "../../../controllers/haversineFormula";
 import styles from "./walkCardVertical.module.css";
 import ReviewStars from "../../reviews/reviewStars/ReviewStars";
 
@@ -20,10 +21,16 @@ export default class WalkCardVertical extends Component {
   };
 
   render() {
+    if (this.props.searchCoordinates) {
+      var distance = haversineFormula(this.props.latitude, this.props.longitude, this.props.searchCoordinates.latitude, this.props.searchCoordinates.longitude).toFixed(2);
+    }
     return (
       <div>
         <a className={styles.linkContainer} href="/">
           <img className={styles.image} src={this.props.image} alt="Dog Walking Location" />
+          <span className={styles.distance} onClick={(e) => e.preventDefault()}>
+            {this.props.searchCoordinates ? distance + "Miles Away" : null}
+          </span>
           <div className={styles.titleContainer}>
             <h1 className={styles.title}>{this.props.title}</h1>
             <Bookmark onClick={this.onBookmarkClick} style={{ display: this.state.bookmarkFilled ? "none" : "block" }} className={styles.bookmark} fill="#282cdd" />

@@ -17,7 +17,8 @@ export default class PopularWalksFrame extends Component {
     this.updateWalksSize();
     window.addEventListener("resize", this.updateWalksSize);
     try {
-      this.setState({ walksData: await fetchPopularWalks() });
+      const walksData = await fetchPopularWalks();
+      this.setState({ walksData: walksData.data });
     } catch (err) {
       console.error(err);
     }
