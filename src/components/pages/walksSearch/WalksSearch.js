@@ -49,17 +49,33 @@ export default class WalksSearch extends Component {
 
   searchFilterUpdateEvent = async (sort, distance, keywords) => {
     var distanceNum = distance !== undefined && !isNaN(parseInt(distance)) ? parseInt(distance) : this.state.maxDistance;
-    console.log(this.state.searchLocation, 0, distanceNum);
-    console.log(await fetchWalksLocation(this.state.searchLocation, 0, distanceNum));
     try {
+      const walksData = await fetchWalksLocation(this.state.searchLocation, 0, distanceNum);
       this.setState({
-        walksData: await fetchWalksLocation(this.state.searchLocation, 0, distanceNum),
+        walksData: this.keywordsFilter(keywords, walksData),
         maxDistance: distanceNum,
       });
     } catch (err) {
       console.error(err);
     }
   };
+
+  keywordsFilter(keywords, walksData) {
+    const keywordsArr = keywords.toLowerCase().split(" ");
+    const keywordsArrLength = keywordsArr.length;
+    const walksDataLength = walksData.length;
+    let sortedData = [];
+
+    for (let i = 0; i < walksDataLength; i++) {
+      for (let n = 0; n < keywordsArrLength; n++) {
+        if (walksData[i].description.toLowerCase().includes(keywordsArr[n])) {
+          sortedData.push(walksData[i]);
+          break;
+        }
+      }
+    }
+    return sortedData;
+  }
 
   render() {
     const walksLength = this.state.walksData !== null ? this.state.walksData.length : 0;
@@ -70,10 +86,18 @@ export default class WalksSearch extends Component {
     const searchText =
       this.state.walksData !== null ? (
         <h4 className={styles.walksNumber}>
-          <strong style={{ fontWeight: 500 }}>{walksLength} walks</strong> found within <strong style={{ fontWeight: 500 }}>{distance} miles</strong> of <strong style={{ fontWeight: 500 }}>{capitalisedTitle}</strong>
+          <strong style={{ fontWeight: 500 }}>
+            {walksLength} {walksLength > 1 ? "walks" : "walk"}
+          </strong>{" "}
+          found within <strong style={{ fontWeight: 500 }}>{distance} miles</strong> of <strong style={{ fontWeight: 500 }}>{capitalisedTitle}</strong>
         </h4>
       ) : null;
-    const searchFilterBar = this.state.walksData !== null ? <SearchFilterBar onUpdate={this.searchFilterUpdateEvent} /> : null;
+    const searchFilterBar =
+      this.state.walksData !== null ? (
+        <div style={{ height: this.state.walksData.length === 0 ? "calc(100vh - 105px - 426px)" : "auto" }}>
+          <SearchFilterBar onUpdate={this.searchFilterUpdateEvent} />
+        </div>
+      ) : null;
     return (
       <React.Fragment>
         <NavBar />

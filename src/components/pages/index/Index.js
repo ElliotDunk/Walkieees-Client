@@ -36,7 +36,7 @@ export default class Index extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar />
+        <NavBar relative={true} />
         <IndexMainVideo />
         <div className={styles.topSpacer}></div>
         <ContentTitle text="Explore Popular Walks" />

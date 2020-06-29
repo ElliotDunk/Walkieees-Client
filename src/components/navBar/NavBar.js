@@ -12,7 +12,7 @@ export default class NavBar extends Component {
           <Header />
           <MainNavContainer />
         </div>
-        <div className={styles.relativeSpacer}></div>
+        <div style={{ display: this.props.relative === true ? "none" : "block" }} className={styles.relativeSpacer}></div>
       </React.Fragment>
     );
   }

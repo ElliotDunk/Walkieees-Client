@@ -16,7 +16,7 @@ export default class SearchFilterBar extends Component {
   }
 
   onUpdateClick = () => {
-    this.props.onUpdate(this.state.filterDropDownValue, this.state.distance, "Keywords");
+    this.props.onUpdate(this.state.filterDropDownValue, this.state.distance, this.state.keywords);
   };
 
   onSortChange = (value) => {
