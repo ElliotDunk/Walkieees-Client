@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import queryString from "query-string";
-import fetchWalksLocation from "../../../api/fetchWalksLocation";
+import fetchWalkLocation from "../../../api/fetchWalkLocation";
 import metersToMiles from "../../../controllers/metersToMiles";
+import haversineMiles from "../../../controllers/haversineFormula";
 
 import styles from "./walksSearch.module.css";
 import NavBar from "../../navBar/NavBar";
@@ -9,6 +10,7 @@ import WalksFrame from "../../walksFrame/WalksFrame";
 import Footer from "../../footer/Footer";
 import SearchFilterBar from "../../searchFilterBar/SearchFilterBar";
 import FrameSwitcher from "../../buttons/frameSwitcher/FrameSwitcher";
+import SearchText from "./searchText/SearchText";
 
 export default class WalksSearch extends Component {
   constructor(props) {
@@ -26,40 +28,51 @@ export default class WalksSearch extends Component {
     };
   }
   async componentDidMount() {
-    const parsedQueryParams = queryString.parse(window.location.search);
-    const searchLocation = parsedQueryParams.location !== undefined ? parsedQueryParams.location : this.state.searchLocation;
-    const minDistance = parsedQueryParams.minDist !== undefined ? parsedQueryParams.minDist : this.state.minDistance;
-    const maxDistance = parsedQueryParams.maxDist !== undefined ? parsedQueryParams.maxDist : this.state.maxDistance;
-    const limit = parsedQueryParams.limit !== undefined ? parsedQueryParams.limit : this.state.limit;
-
-    this.setState({ searchLocation, minDistance, maxDistance, limit });
+    await this.setQueryStates();
 
     try {
-      const walksData = await fetchWalksLocation(searchLocation, minDistance, maxDistance, limit);
-      this.setState({
-        walksData: walksData.data,
-        searchCoordinates: walksData.coordinates,
+      const fetchedData = await fetchWalkLocation(this.state.searchLocation, this.state.minDistance, this.state.maxDistance, this.state.limit);
+      this.setState({ searchCoordinates: fetchedData.coordinates }, async () => {
+        const walkswithDistance = await this.addDistanceToWalks(fetchedData.data);
+        this.setState({ walksData: walkswithDistance });
       });
     } catch (err) {
       console.error(err);
     }
   }
 
-  componentDidUpdate = () => {};
-
   setQueryStates() {
-    const parsedQueryParams = queryString.parse(window.location.search);
-    const searchLocation = parsedQueryParams.location !== undefined ? parsedQueryParams.location : this.state.searchLocation;
-    const minDistance = parsedQueryParams.minDist !== undefined ? parsedQueryParams.minDist : this.state.minDistance;
-    const maxDistance = parsedQueryParams.maxDist !== undefined ? parsedQueryParams.maxDist : this.state.maxDistance;
-    const limit = parsedQueryParams.limit !== undefined ? parsedQueryParams.limit : this.state.limit;
-    this.setState({ searchLocation, minDistance, maxDistance, limit });
+    return new Promise((resolve, reject) => {
+      const parsedQueryParams = queryString.parse(window.location.search);
+      const searchLocation = parsedQueryParams.location !== undefined ? parsedQueryParams.location : this.state.searchLocation;
+      const minDistance = parsedQueryParams.minDist !== undefined ? parsedQueryParams.minDist : this.state.minDistance;
+      const maxDistance = parsedQueryParams.maxDist !== undefined ? parsedQueryParams.maxDist : this.state.maxDistance;
+      const limit = parsedQueryParams.limit !== undefined ? parsedQueryParams.limit : this.state.limit;
+
+      try {
+        this.setState({ searchLocation, minDistance, maxDistance, limit });
+        resolve();
+      } catch (err) {
+        reject(err);
+      }
+    });
   }
+
+  addDistanceToWalks = (walks) => {
+    const walksData = walks;
+    const length = walks !== null ? walks.length : 0;
+
+    for (let i = 0; i < length; i++) {
+      walksData[i].distanceToSearch = haversineMiles(this.state.searchCoordinates.latitude, this.state.searchCoordinates.longitude, walksData[i].location.coordinates[0], walksData[i].location.coordinates[1]);
+    }
+
+    return walksData;
+  };
 
   searchFilterUpdateEvent = async (sort, distance, keywords) => {
     var distanceNum = distance !== undefined && !isNaN(parseInt(distance)) ? parseInt(distance) : this.state.maxDistance;
     try {
-      const walksData = await fetchWalksLocation(this.state.searchLocation, 0, distanceNum);
+      const walksData = await fetchWalkLocation(this.state.searchLocation, 0, distanceNum);
       this.setState({
         walksData: this.keywordsFilter(keywords, walksData.data),
         searchCoordinates: walksData.coordinates,
