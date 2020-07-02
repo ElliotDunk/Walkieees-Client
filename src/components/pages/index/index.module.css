@@ -15,3 +15,9 @@
   max-width: 100%;
   margin: 25px 0 50px 0;
 }
+
+.popularButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}

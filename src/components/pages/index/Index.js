@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import FetchWalks from "../../../api/fetchWalks";
 import NavBar from "../../navBar/NavBar";
 import IndexMainVideo from "../../indexMainVideo/IndexMainVideo";
 import ContentTitle from "../../titles/contentTitle/ContentTitle";
-import PopularWalksFrame from "../../popularWalksFrame/PopularWalksFrame";
 import BussinesesFrame from "../../businessesFrame/businessesFrame";
 import WelfareFrame from "../../welfareFrame/WelfareFrame";
 import CutestDogFrame from "../../cutestDogFrame/CutestDogFrame";
 import RescueCenterFrame from "../../rescueCenterFrame/RescueCenterFrame";
 import Footer from "../../footer/Footer";
 import styles from "./index.module.css";
+
+import WalksFrame from "../../walksFrame/WalksFrame";
+import PrimaryButton from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
 
 export default class Index extends Component {
   constructor(props) {
@@ -19,9 +22,15 @@ export default class Index extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.updateWalksSize();
     window.addEventListener("resize", this.updateWalksSize);
+    try {
+      const walksData = await FetchWalks.location({ latitude: -1.08333, longitude: 53.95 });
+      this.setState({ walksData: walksData.walks });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   componentWillUnmount() {
@@ -41,7 +50,10 @@ export default class Index extends Component {
         <div className={styles.topSpacer}></div>
         <ContentTitle text="Explore Popular Walks" />
         <div className={styles.frameContainer}>
-          <PopularWalksFrame />
+          <WalksFrame walksArr={this.state.walksData} endIndex={this.state.walksSize} />
+          <div className={styles.popularButtonContainer}>
+            <PrimaryButton text="View More" />
+          </div>
         </div>
         <ContentTitle text="Meet Local Dog Businesses" />
         <div className={styles.frameContainer}>
