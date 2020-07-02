@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import ButtonPrimary from "../../buttons/buttonPrimary/ButtonPrimary";
+import ButtonPrimary from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
 import styles from "./welfareCard.module.css";
 
 export default class WelfareCard extends PureComponent {

@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import Logo from "../../logo/Logo";
-import AccountBtn from "../../buttons/accountBtn/AccountBtn";
+import AccountBtn from "../../inputs/buttons/accountBtn/AccountBtn";
 import styles from "./navHeader.module.css";
 
 import { ReactComponent as Menu } from "../../../assets/svgs/bars.svg";

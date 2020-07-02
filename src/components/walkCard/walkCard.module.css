@@ -2,7 +2,7 @@
   text-decoration: none;
 }
 
-.distanceBookmarkContainer {
+.bookmarkContainer {
   display: flex;
   justify-content: space-between;
 }

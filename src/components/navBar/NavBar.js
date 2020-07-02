@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import Header from "./navHeader/NavHeader";
 import MainNavContainer from "./mainNavContainer/MainNavContainer";
 import styles from "./navBar.module.css";
@@ -17,3 +18,7 @@ export default class NavBar extends PureComponent {
     );
   }
 }
+
+NavBar.propTypes = {
+  relative: PropTypes.bool,
+};

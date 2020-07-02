@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import styles from "./rescueDogCard.module.css";
 
 export default class RescueDogCard extends PureComponent {
@@ -14,3 +15,10 @@ export default class RescueDogCard extends PureComponent {
     );
   }
 }
+
+RescueDogCard.propTypes = {
+  link: PropTypes.string,
+  image: PropTypes.string,
+  location: PropTypes.string,
+  title: PropTypes.string,
+};

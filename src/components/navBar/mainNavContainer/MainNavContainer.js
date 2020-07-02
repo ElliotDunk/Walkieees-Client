@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import Logo from "../../logo/Logo";
 import SearchBar from "../../searchBar/SearchBar";
-import AccountBtn from "../../buttons/accountBtn/AccountBtn";
+import AccountBtn from "../../inputs/buttons/accountBtn/AccountBtn";
 import styles from "./mainNavContainer.module.css";
 
 export default class MainContainer extends PureComponent {

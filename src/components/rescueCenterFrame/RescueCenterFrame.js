@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import RescueDogCard from "./rescueDogCard/RescueDogCard";
-import ButtonPrimary from "../buttons/buttonPrimary/ButtonPrimary";
+import ButtonPrimary from "../inputs/buttons/buttonPrimary/ButtonPrimary";
 import styles from "./rescueCenterFrame.module.css";
 
 import RescueDog from "../../assets/images/rescueDogs/rescueDogs.png";

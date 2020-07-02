@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import Logo from "../../logo/Logo";
 import EmailSubscription from "../../emailSubscription/EmailSubscription";
-import ButtonPrimary from "../../buttons/buttonPrimary/ButtonPrimary";
+import ButtonPrimary from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
 import LowerFooter from "../lowerFooter/lowerFooterFlex/LowerFooterFlex";
 import styles from "./footerMedium.module.css";
 

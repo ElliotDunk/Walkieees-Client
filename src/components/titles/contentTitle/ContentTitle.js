@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import styles from "./contentTitle.module.css";
 
 export default class ContentTitle extends PureComponent {
@@ -10,3 +11,7 @@ export default class ContentTitle extends PureComponent {
     );
   }
 }
+
+ContentTitle.propTypes = {
+  text: PropTypes.string,
+};

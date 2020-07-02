@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import ArrowBtn from "../arrowBtn/ArrowBtn";
 import styles from "./frameSwitcher.module.css";
@@ -20,3 +21,10 @@ export default class WalksSearch extends Component {
     );
   }
 }
+
+WalksSearch.propTypes = {
+  currentFrame: PropTypes.number,
+  maxFrame: PropTypes.number,
+  onBackClick: PropTypes.func,
+  onNextClick: PropTypes.func,
+};

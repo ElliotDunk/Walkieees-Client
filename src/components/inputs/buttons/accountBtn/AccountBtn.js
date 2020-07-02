@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
-import { ReactComponent as AccountLogo } from "../../../assets/svgs/account-logo.svg";
+import PropTypes from "prop-types";
+import { ReactComponent as AccountLogo } from "../../../../assets/svgs/account-logo.svg";
 import styles from "./accountBtn.module.css";
 
 export default class AccountLink extends PureComponent {
@@ -7,7 +8,9 @@ export default class AccountLink extends PureComponent {
     return (
       <a className={styles.a} href="/login">
         <div className={styles.accountBtnContainer}>
-          <span style={{ color: this.props.color || "#282cdd" }} className={styles.span}>Sign In</span>
+          <span style={{ color: this.props.color || "#282cdd" }} className={styles.span}>
+            Sign In
+          </span>
           <div className={styles.logoContainer}>
             <AccountLogo fill={this.props.color || "#282cdd"} />
           </div>
@@ -16,3 +19,7 @@ export default class AccountLink extends PureComponent {
     );
   }
 }
+
+AccountLink.propTypes = {
+  color: PropTypes.string,
+};

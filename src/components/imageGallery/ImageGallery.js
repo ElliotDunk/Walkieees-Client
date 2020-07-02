@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import { ReactComponent as Chevron } from "../../assets/svgs/chevron.svg";
 import { ReactComponent as CircleFilled } from "../../assets/svgs/circleFilled.svg";
 import { ReactComponent as CircleUnfilled } from "../../assets/svgs/circleUnfilled.svg";
@@ -72,3 +73,7 @@ export default class ImageGallery extends PureComponent {
     );
   }
 }
+
+ImageGallery.protoTypes = {
+  images: PropTypes.array,
+};

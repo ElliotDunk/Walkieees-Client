@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import styles from "./buttonPrimary.module.css";
 
 export default class ButtonPrimary extends PureComponent {
@@ -17,3 +18,10 @@ export default class ButtonPrimary extends PureComponent {
     );
   }
 }
+
+ButtonPrimary.propTypes = {
+  color: PropTypes.string,
+  text: PropTypes.string,
+  href: PropTypes.string,
+  onClick: PropTypes.func,
+};

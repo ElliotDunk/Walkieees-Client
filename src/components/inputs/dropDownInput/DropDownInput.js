@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./dropDownInput.module.css";
+import PropTypes from "prop-types";
 
 import { ReactComponent as DownChevron } from "../../../assets/svgs/chevron.svg";
 
@@ -42,3 +43,8 @@ export default class DropDownInput extends Component {
     );
   }
 }
+
+DropDownInput.propTypes = {
+  optinos: PropTypes.array,
+  onChange: PropTypes.func,
+};

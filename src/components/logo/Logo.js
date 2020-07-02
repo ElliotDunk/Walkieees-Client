@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import "./logo.module.css";
 
 export default class Logo extends PureComponent {
@@ -10,3 +11,8 @@ export default class Logo extends PureComponent {
     );
   }
 }
+
+Logo.propTypes = {
+  color: PropTypes.string,
+  fontSize: PropTypes.string,
+};

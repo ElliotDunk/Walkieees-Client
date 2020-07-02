@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import fetchPopularWalks from "../../api/fetchPopularWalks";
 import WalksFrame from "../walksFrame/WalksFrame";
-import PrimaryButton from "../buttons/buttonPrimary/ButtonPrimary";
+import PrimaryButton from "../inputs/buttons/buttonPrimary/ButtonPrimary";
 import styles from "./popularWalksFrame.module.css";
 
 export default class PopularWalksFrame extends PureComponent {

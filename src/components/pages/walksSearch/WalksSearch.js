@@ -9,8 +9,7 @@ import NavBar from "../../navBar/NavBar";
 import WalksFrame from "../../walksFrame/WalksFrame";
 import Footer from "../../footer/Footer";
 import SearchFilterBar from "../../searchFilterBar/SearchFilterBar";
-import FrameSwitcher from "../../buttons/frameSwitcher/FrameSwitcher";
-import SearchText from "./searchText/SearchText";
+import FrameSwitcher from "../../inputs/buttons/frameSwitcher/FrameSwitcher";
 
 export default class WalksSearch extends Component {
   constructor(props) {

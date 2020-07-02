@@ -1,7 +1,8 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import styles from "./arrowBtn.module.css";
 
-import { ReactComponent as Arrow } from "../../../assets/svgs/arrow.svg";
+import { ReactComponent as Arrow } from "../../../../assets/svgs/arrow.svg";
 
 export default class ArrowBtn extends PureComponent {
   render() {
@@ -14,3 +15,8 @@ export default class ArrowBtn extends PureComponent {
     );
   }
 }
+
+ArrowBtn.propTypes = {
+  unactive: PropTypes.bool,
+  onClick: PropTypes.func,
+};

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import milesToMeters from "../../controllers/milesToMeters";
 import DropDownInput from "../inputs/dropDownInput/DropDownInput";
-import ButtonPrimary from "../buttons/buttonPrimary/ButtonPrimary";
+import ButtonPrimary from "../inputs/buttons/buttonPrimary/ButtonPrimary";
 import styles from "./searchFilterBar.module.css";
 
 export default class SearchFilterBar extends Component {
@@ -47,3 +48,7 @@ export default class SearchFilterBar extends Component {
     );
   }
 }
+
+SearchFilterBar.propTypes = {
+  onUpdate: PropTypes.func,
+};
