@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { ReactComponent as DownArrow } from "../../assets/svgs/chevron.svg";
 import { ReactComponent as SearchIcon } from "../../assets/svgs/search.svg";
 import styles from "./searchBar.module.css";
 
-export default class SearchBar extends Component {
+export default class SearchBar extends PureComponent {
   constructor(props) {
     super(props);
     this.searchInput = React.createRef();

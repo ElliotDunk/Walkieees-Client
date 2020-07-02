@@ -1,10 +1,12 @@
-import React from 'react'
-import styles from './contentTitle.module.css'
+import React, { PureComponent } from "react";
+import styles from "./contentTitle.module.css";
 
-export default function ContentTitle(props) {
+export default class ContentTitle extends PureComponent {
+  render() {
     return (
-        <React.Fragment>
-            <h1 className={styles.title}>{props.text}</h1>
-        </React.Fragment>
-    )
+      <React.Fragment>
+        <h1 className={styles.title}>{this.props.text}</h1>
+      </React.Fragment>
+    );
+  }
 }

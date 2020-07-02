@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import LoadingCircle from "../loadingCircle/LoadingCircle";
 import WalkCard from "../walkCard/walkCardVertical/WalkCardVertical";
 import styles from "./walksFrame.module.css";
 
-export default class WalksFrame extends Component {
+export default class WalksFrame extends PureComponent {
   render() {
     const dataArr = this.props.walksArr !== null ? this.props.walksArr : [];
     if (this.props.walksArr === null) {

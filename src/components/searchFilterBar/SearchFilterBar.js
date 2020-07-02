@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import milesToMeters from "../../controllers/milesToMeters";
-import DropDownInput from "../dropDownInput/DropDownInput";
+import DropDownInput from "../inputs/dropDownInput/DropDownInput";
 import ButtonPrimary from "../buttons/buttonPrimary/ButtonPrimary";
 import styles from "./searchFilterBar.module.css";
 

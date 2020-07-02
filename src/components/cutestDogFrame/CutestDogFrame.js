@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import ButtonPrimary from "../buttons/buttonPrimary/ButtonPrimary";
+import React, { PureComponent } from "react";
+import ButtonPrimary from "../inputs/buttons/buttonPrimary/ButtonPrimary";
 import ImageGallery from "../imageGallery/ImageGallery";
 import styles from "./cutestDogFrame.module.css";
 
@@ -8,7 +8,7 @@ import CutestDogImage2 from "../../assets/images/cutestDog/cutestDog2.jpg";
 import CutestDogImage3 from "../../assets/images/cutestDog/cutestDog3.jpeg";
 import CutestDogImage4 from "../../assets/images/cutestDog/cutestDog4.jpg";
 
-export default class CutestDogFrame extends Component {
+export default class CutestDogFrame extends PureComponent {
   constructor(props) {
     super(props);
     this.rightContainer = React.createRef();

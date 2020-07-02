@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import fetchPopularWalks from "../../api/fetchPopularWalks";
 import WalksFrame from "../walksFrame/WalksFrame";
 import PrimaryButton from "../buttons/buttonPrimary/ButtonPrimary";
 import styles from "./popularWalksFrame.module.css";
 
-export default class PopularWalksFrame extends Component {
+export default class PopularWalksFrame extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

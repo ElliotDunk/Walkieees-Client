@@ -1,15 +1,12 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import "./logo.module.css";
 
-export default function Logo(props) {
-  const style = {
-    color: props.color || null,
-    fontSize: props.fontSize || null
-  };
-
-  return (
-    <React.Fragment>
-      <h1 style={style}>Walkieees</h1>
-    </React.Fragment>
-  );
+export default class Logo extends PureComponent {
+  render() {
+    return (
+      <React.Fragment>
+        <h1 style={{ color: this.props.color, fontSize: this.props.fontSize }}>Walkieees</h1>
+      </React.Fragment>
+    );
+  }
 }

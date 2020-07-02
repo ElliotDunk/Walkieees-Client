@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PureComponent } from 'react'
 import Logo from "../../logo/Logo";
 import EmailSubscription from "../../emailSubscription/EmailSubscription";
 import ButtonPrimary from "../../buttons/buttonPrimary/ButtonPrimary";
@@ -7,9 +7,11 @@ import styles from "./footerLarge.module.css";
 
 import { ReactComponent as Envelope } from "../../../assets/svgs/envelope.svg";
 
-export default function FooterLarge() {
-  return (
-    <div className={styles.container}>
+
+export default class FooterLarge extends PureComponent {
+  render() {
+    return (
+      <div className={styles.container}>
       <div className={styles.upperContainer}>
         <div>
           <Logo color="white" />
@@ -74,5 +76,6 @@ export default function FooterLarge() {
       </div>
       <LowerFooter />
     </div>
-  );
+    )
+  }
 }

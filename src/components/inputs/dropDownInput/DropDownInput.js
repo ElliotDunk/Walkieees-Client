@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styles from "./dropDownInput.module.css";
 
-import { ReactComponent as DownChevron } from "../../assets/svgs/chevron.svg";
+import { ReactComponent as DownChevron } from "../../../assets/svgs/chevron.svg";
 
 export default class DropDownInput extends Component {
   constructor(props) {

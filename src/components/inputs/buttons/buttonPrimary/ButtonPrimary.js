@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styles from "./buttonPrimary.module.css";
 
-export default class ButtonPrimary extends Component {
+export default class ButtonPrimary extends PureComponent {
   render() {
     const color = this.props.color !== undefined ? this.props.color : "#282cdd";
     const textColor = this.props.color !== undefined ? this.props.textColor : "white";

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import styles from "./loadingCircle.module.css";
 
-export default function LoadingCircle() {
-  return <div className={styles.loading}></div>;
+export default class LoadingCircle extends PureComponent {
+  render() {
+    return <div className={styles.loading}></div>;
+  }
 }

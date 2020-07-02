@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import ButtonPrimary from "../../buttons/buttonPrimary/ButtonPrimary";
 import styles from "./welfareCard.module.css";
 
-export default class WelfareCard extends Component {
+export default class WelfareCard extends PureComponent {
   constructor(props) {
     super(props);
     this.line = React.createRef();

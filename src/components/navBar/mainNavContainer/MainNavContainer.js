@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Logo from "../../logo/Logo";
 import SearchBar from "../../searchBar/SearchBar";
 import AccountBtn from "../../buttons/accountBtn/AccountBtn";
 import styles from "./mainNavContainer.module.css";
 
-export default class MainContainer extends Component {
+export default class MainContainer extends PureComponent {
   render() {
     return (
       <div className={styles.container}>

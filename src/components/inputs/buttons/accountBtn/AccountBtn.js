@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { ReactComponent as AccountLogo } from "../../../assets/svgs/account-logo.svg";
 import styles from "./accountBtn.module.css";
 
-export default class AccountLink extends Component {
+export default class AccountLink extends PureComponent {
   render() {
     return (
       <a className={styles.a} href="/login">

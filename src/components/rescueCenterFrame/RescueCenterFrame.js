@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import RescueDogCard from "./rescueDogCard/RescueDogCard";
 import ButtonPrimary from "../buttons/buttonPrimary/ButtonPrimary";
 import styles from "./rescueCenterFrame.module.css";
@@ -8,7 +8,7 @@ import RescueDog2 from "../../assets/images/rescueDogs/rescueDogs2.png";
 import RescueDog3 from "../../assets/images/rescueDogs/rescueDogs3.png";
 import RescueDog4 from "../../assets/images/rescueDogs/rescueDogs4.png";
 
-export default class RescueCenterFrame extends Component {
+export default class RescueCenterFrame extends PureComponent {
   render() {
     return (
       <div className={styles.container}>
