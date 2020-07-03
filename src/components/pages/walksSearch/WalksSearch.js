@@ -31,7 +31,7 @@ export default class WalksSearch extends Component {
     await this.setQueryStates();
 
     try {
-      const fetchedData = await FetchWalks.location(this.state.searchLocation, this.state.minDistance, this.state.maxDistance, this.state.limit);
+      const fetchedData = await FetchWalks.location({ location: this.state.searchLocation, minDistance: this.state.minDistance, maxDistance: this.state.maxDistance, limit: this.state.limit });
       this.setState({ searchCoordinates: fetchedData.geocodeData.coordinates }, async () => {
         const walksIncDistance = await this.addDistanceToWalks(fetchedData.walks);
         this.setState({ walksData: walksIncDistance });
