@@ -72,7 +72,7 @@ export default class WalksSearch extends Component {
   searchFilterUpdateEvent = async (sort, distance, keywords) => {
     var distanceNum = distance !== undefined && !isNaN(parseInt(distance)) ? parseInt(distance) : this.state.maxDistance;
     try {
-      const walksData = await FetchWalks.location(this.state.searchLocation, 0, distanceNum);
+      const walksData = await FetchWalks.location({ location: this.state.searchLocation, maxDistance: distanceNum });
       this.setState({
         walksData: this.keywordsFilter(keywords, walksData.walks),
         searchCoordinates: walksData.geocodeData.coordinates,
