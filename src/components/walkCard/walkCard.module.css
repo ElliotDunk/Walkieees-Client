@@ -26,8 +26,10 @@
 }
 
 .bookmark {
-  min-width: 15px;
-  min-height: 15px;
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 20px;
+  max-height: 20px;
   margin: 2px 0 0 10px;
 }
 

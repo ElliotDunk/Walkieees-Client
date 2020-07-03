@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/walks";
+const API_URL = "http://doghubgateway.herokuapp.com/walks";
 
 export default class FetchWalks {
   static location({ location, latitude, longitude, minDistance = 0, maxDistance = 80000, limit = 0 }) {
