@@ -55,7 +55,7 @@ export default class WalkCardVertical extends Component {
 WalkCardVertical.propTypes = {
   latitude: PropTypes.number,
   longitude: PropTypes.number,
-  searchCoordinates: PropTypes.array,
+  searchCoordinates: PropTypes.object,
   image: PropTypes.string,
   title: PropTypes.string,
   location: PropTypes.string,

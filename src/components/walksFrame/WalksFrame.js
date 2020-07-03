@@ -37,5 +37,5 @@ WalksFrame.propTypes = {
   walksArr: PropTypes.array,
   startIndex: PropTypes.number,
   endIndex: PropTypes.number,
-  searchCoordinates: PropTypes.array,
+  searchCoordinates: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
