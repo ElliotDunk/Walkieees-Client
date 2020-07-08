@@ -18,7 +18,8 @@ export default class WalksSearch extends Component {
     this.walksText = React.createRef();
     this.state = {
       walksData: null,
-      searchCoordinates: [],
+      geocodeCoordinates: [],
+      geocodeLocation: "",
       searchLocation: "",
       minDistance: 0,
       maxDistance: 80000,
@@ -32,9 +33,11 @@ export default class WalksSearch extends Component {
 
     try {
       const fetchedData = await FetchWalks.location({ location: this.state.searchLocation, minDistance: this.state.minDistance, maxDistance: this.state.maxDistance, limit: this.state.limit });
-      this.setState({ searchCoordinates: fetchedData.geocodeData.coordinates }, async () => {
+      this.setState({ geocodeCoordinates: fetchedData.geocodeData.coordinates, geocodeLocation: fetchedData.geocodeData.location }, async () => {
         const walksIncDistance = await this.addDistanceToWalks(fetchedData.walks);
-        this.setState({ walksData: walksIncDistance });
+        const sortedDistanceWalks = this.sortedWalks("Closest", walksIncDistance);
+        console.log(sortedDistanceWalks);
+        this.setState({ walksData: sortedDistanceWalks });
       });
     } catch (err) {
       console.error(err);
@@ -63,19 +66,21 @@ export default class WalksSearch extends Component {
     const length = walks !== null ? walks.length : 0;
 
     for (let i = 0; i < length; i++) {
-      walksData[i].distanceToSearch = haversineMiles(this.state.searchCoordinates.latitude, this.state.searchCoordinates.longitude, walksData[i].location.coordinates[0], walksData[i].location.coordinates[1]);
+      walksData[i].distanceToSearch = haversineMiles(this.state.geocodeCoordinates.latitude, this.state.geocodeCoordinates.longitude, walksData[i].location.coordinates[0], walksData[i].location.coordinates[1]);
     }
 
     return walksData;
   };
 
   searchFilterUpdateEvent = async (sort, distance, keywords) => {
-    var distanceNum = distance !== undefined && !isNaN(parseInt(distance)) ? parseInt(distance) : this.state.maxDistance;
+    console.log(sort);
+    const distanceNum = distance !== undefined && !isNaN(parseInt(distance)) ? parseInt(distance) : this.state.maxDistance;
     try {
-      const walksData = await FetchWalks.location({ location: this.state.searchLocation, maxDistance: distanceNum });
+      const fetchedData = await FetchWalks.location({ location: this.state.searchLocation, maxDistance: distanceNum });
+      const walksIncDistance = await this.addDistanceToWalks(fetchedData.walks);
       this.setState({
-        walksData: this.keywordsFilter(keywords, walksData.walks),
-        searchCoordinates: walksData.geocodeData.coordinates,
+        walksData: this.keywordsFilter(keywords, this.sortedWalks(sort, walksIncDistance)),
+        searchCoordinates: fetchedData.geocodeData.coordinates,
         maxDistance: distanceNum,
         currentFrame: 1,
       });
@@ -101,6 +106,18 @@ export default class WalksSearch extends Component {
     return sortedData;
   }
 
+  sortedWalks(sort, walksData) {
+    if (sort === "Closest") {
+      walksData.sort((a, b) => a.distanceToSearch - b.distanceToSearch);
+    } else if (sort === "Popularity") {
+      walksData.sort((a, b) => b.views.length - a.views.length);
+    } else if (sort === "Date Created") {
+      console.log(Date.parse(walksData[12].dateCreated));
+      walksData.sort((a, b) => Date.parse(b.dateCreated) - Date.parse(a.dateCreated));
+    }
+    return walksData;
+  }
+
   onBackClick = () => {
     if (this.state.currentFrame > 1) {
       const previousFrame = this.state.currentFrame - 1;
@@ -119,22 +136,19 @@ export default class WalksSearch extends Component {
   };
 
   render() {
-    const capitalisedTitle = this.state.searchLocation.replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
     return (
       <React.Fragment>
         <NavBar />
         <div className={styles.container}>
           <div className={styles.upperContainer}>
             <div style={{ display: this.state.walksData !== null ? "block" : "none" }}>
-              <WalksSearchText walksAmount={this.state.walksData !== null ? this.state.walksData.length : 0} distance={metersToMiles(this.state.maxDistance)} location={capitalisedTitle} />
+              <WalksSearchText walksAmount={this.state.walksData !== null ? this.state.walksData.length : 0} distance={metersToMiles(this.state.maxDistance)} location={this.state.geocodeLocation} />
             </div>
             <div style={{ height: this.state.walksData === null ? "calc(100vh - 105px - 426px)" : "auto", display: this.state.walksData !== null ? "block" : "none" }}>
               <SearchFilterBar onUpdate={this.searchFilterUpdateEvent} />
             </div>
           </div>
-          <WalksFrame searchCoordinates={this.state.searchCoordinates} walksArr={this.state.walksData !== null ? this.state.walksData.slice(this.state.walksPerFrame * this.state.currentFrame - this.state.walksPerFrame, this.state.walksPerFrame * this.state.currentFrame) : null} />
+          <WalksFrame searchCoordinates={this.state.geocodeCoordinates} walksArr={this.state.walksData !== null ? this.state.walksData.slice(this.state.walksPerFrame * this.state.currentFrame - this.state.walksPerFrame, this.state.walksPerFrame * this.state.currentFrame) : null} />
           <div style={{ display: this.state.walksData !== null ? "block" : "none" }}>
             <FrameSwitcher currentFrame={this.state.currentFrame} maxFrame={this.state.walksData !== null ? Math.ceil(this.state.walksData.length / this.state.walksPerFrame) : null} onBackClick={this.onBackClick} onNextClick={this.onNextClick} />
           </div>

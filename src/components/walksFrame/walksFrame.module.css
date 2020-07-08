@@ -1,11 +1,10 @@
 .loadingContainer {
   padding: 25px 0;
-  height: calc(100vh - 105px - 422px);
-  min-height: 250px;
+  min-height: calc(100vh - 76px - 381px - 70px);
 }
 
 .innerLoadingContainer {
-  margin-top: 12vh;
+  margin-top: calc(50vh - 335px);
 }
 
 .container {
