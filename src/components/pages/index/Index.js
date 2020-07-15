@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FetchWalks from "../../../api/fetchWalks";
+import FetchWalksSearch from "../../../api/fetchWalksSearch";
 import NavBar from "../../navBar/NavBar";
 import IndexMainVideo from "../../indexMainVideo/IndexMainVideo";
 import ContentTitle from "../../titles/contentTitle/ContentTitle";
@@ -26,7 +26,7 @@ export default class Index extends Component {
     this.updateWalksSize();
     window.addEventListener("resize", this.updateWalksSize);
     try {
-      const walksData = await FetchWalks.location({ latitude: -1.08333, longitude: 53.95 });
+      const walksData = await FetchWalksSearch({ latitude: -1.08333, longitude: 53.95, maxDistance: 800000, limit: 8 });
       this.setState({ walksData: walksData.walks });
     } catch (err) {
       console.error(err);

@@ -1,0 +1,46 @@
+.container {
+  width: 100vw;
+  /* max-width: 1150px; */
+  margin: 0 auto;
+}
+
+.imageFlexContainer {
+  display: flex;
+}
+
+.imageGalleryContainer {
+  width: 80%;
+  height: 750px;
+}
+
+.titleBtnContainer {
+  display: block;
+  width: 20%;
+  height: 750pxpx;
+}
+
+.titleFlexContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  background-color: #282cdd;
+}
+
+.headerTitle {
+  color: white;
+  font-family: VisbyRoundCF;
+  font-weight: 500;
+  text-align: center;
+}
+
+.headerDescription {
+  color: white;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.reviewStarsContainer {
+  display: flex;
+  justify-content: center;
+}

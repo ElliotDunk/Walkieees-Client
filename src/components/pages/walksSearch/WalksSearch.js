@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import queryString from "query-string";
-import FetchWalks from "../../../api/fetchWalks";
-import metersToMiles from "../../../controllers/metersToMiles";
-import haversineMiles from "../../../controllers/haversineFormula";
+import FetchWalksSearch from "../../../api/fetchWalksSearch";
+import metersToMiles from "../../../utils/metersToMiles";
+import haversineMiles from "../../../utils/haversineFormula";
 
 import styles from "./walksSearch.module.css";
 import NavBar from "../../navBar/NavBar";
@@ -22,7 +22,7 @@ export default class WalksSearch extends Component {
       geocodeLocation: "",
       searchLocation: "",
       minDistance: 0,
-      maxDistance: 80000,
+      maxDistance: 40000,
       limit: 0,
       walksPerFrame: 8,
       currentFrame: 1,
@@ -32,11 +32,10 @@ export default class WalksSearch extends Component {
     await this.setQueryStates();
 
     try {
-      const fetchedData = await FetchWalks.location({ location: this.state.searchLocation, minDistance: this.state.minDistance, maxDistance: this.state.maxDistance, limit: this.state.limit });
-      this.setState({ geocodeCoordinates: fetchedData.geocodeData.coordinates, geocodeLocation: fetchedData.geocodeData.location }, async () => {
+      const fetchedData = await FetchWalksSearch({ location: this.state.searchLocation, minDistance: this.state.minDistance, maxDistance: this.state.maxDistance, limit: this.state.limit });
+      this.setState({ geocodeCoordinates: fetchedData.coordinates, geocodeLocation: fetchedData.location }, async () => {
         const walksIncDistance = await this.addDistanceToWalks(fetchedData.walks);
         const sortedDistanceWalks = this.sortedWalks("Closest", walksIncDistance);
-        console.log(sortedDistanceWalks);
         this.setState({ walksData: sortedDistanceWalks });
       });
     } catch (err) {
@@ -73,14 +72,13 @@ export default class WalksSearch extends Component {
   };
 
   searchFilterUpdateEvent = async (sort, distance, keywords) => {
-    console.log(sort);
     const distanceNum = distance !== undefined && !isNaN(parseInt(distance)) ? parseInt(distance) : this.state.maxDistance;
     try {
-      const fetchedData = await FetchWalks.location({ location: this.state.searchLocation, maxDistance: distanceNum });
+      const fetchedData = await FetchWalksSearch({ location: this.state.searchLocation, maxDistance: distanceNum });
       const walksIncDistance = await this.addDistanceToWalks(fetchedData.walks);
       this.setState({
         walksData: this.keywordsFilter(keywords, this.sortedWalks(sort, walksIncDistance)),
-        searchCoordinates: fetchedData.geocodeData.coordinates,
+        searchCoordinates: fetchedData.coordinates,
         maxDistance: distanceNum,
         currentFrame: 1,
       });
@@ -112,7 +110,6 @@ export default class WalksSearch extends Component {
     } else if (sort === "Popularity") {
       walksData.sort((a, b) => b.views.length - a.views.length);
     } else if (sort === "Date Created") {
-      console.log(Date.parse(walksData[12].dateCreated));
       walksData.sort((a, b) => Date.parse(b.dateCreated) - Date.parse(a.dateCreated));
     }
     return walksData;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import milesToMeters from "../../controllers/milesToMeters";
+import milesToMeters from "../../utils/milesToMeters";
 import DropDownInput from "../inputs/dropDownInput/DropDownInput";
 import ButtonPrimary from "../inputs/buttons/buttonPrimary/ButtonPrimary";
 import styles from "./searchFilterBar.module.css";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import haversineFormula from "../../controllers/haversineFormula";
+import haversineFormula from "../../utils/haversineFormula";
 import styles from "./walkCard.module.css";
 import ReviewStars from "../reviews/reviewStars/ReviewStars";
 
@@ -27,7 +27,7 @@ export default class WalkCardVertical extends Component {
     }
     return (
       <div>
-        <a className={styles.linkContainer} href="/">
+        <a className={styles.linkContainer} href={`/walks/${this.props.ID}`}>
           <img className={styles.image} src={this.props.image} alt="Dog Walking Location" />
           <div className={styles.bookmarkContainer}>
             <span className={styles.distance} onClick={(e) => e.preventDefault()}>
@@ -62,4 +62,5 @@ WalkCardVertical.propTypes = {
   rating: PropTypes.number,
   description: PropTypes.string,
   bookmarkTitle: PropTypes.bool,
+  ID: PropTypes.string,
 };

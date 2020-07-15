@@ -17,6 +17,7 @@
   min-height: 100%;
   transition: 0.5s;
   user-select: none;
+  object-fit: cover;
 }
 
 .buttonContainer {
