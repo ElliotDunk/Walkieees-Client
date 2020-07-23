@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import queryString from "query-string";
-import FetchWalksSearch from "../../../api/fetchWalksSearch";
+import mapboxgl from "mapbox-gl";
+import FetchWalksSearch from "../../../api/fetchManyWalks";
 import metersToMiles from "../../../utils/metersToMiles";
 import haversineMiles from "../../../utils/haversineFormula";
 
@@ -40,6 +41,24 @@ export default class WalksSearch extends Component {
       });
     } catch (err) {
       console.error(err);
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.state.walksData) {
+      const latitude = this.state.geocodeCoordinates.latitude;
+      const longitude = this.state.geocodeCoordinates.longitude;
+
+      const map = new mapboxgl.Map({
+        container: this.mapContainer,
+        style: "mapbox://styles/elliotdunk/ckcxy31nk1bdu1inn9tng3863",
+        center: [latitude, longitude],
+        zoom: 5,
+      });
+
+      this.state.walksData.forEach((walk) => {
+        const marker = new mapboxgl.Marker().setLngLat([walk.location.coordinates[0], walk.location.coordinates[1]]).addTo(map);
+      });
     }
   }
 
@@ -150,6 +169,7 @@ export default class WalksSearch extends Component {
             <FrameSwitcher currentFrame={this.state.currentFrame} maxFrame={this.state.walksData !== null ? Math.ceil(this.state.walksData.length / this.state.walksPerFrame) : null} onBackClick={this.onBackClick} onNextClick={this.onNextClick} />
           </div>
         </div>
+        <div ref={(el) => (this.mapContainer = el)} className={styles.mapContainer} />
         <Footer />
       </React.Fragment>
     );

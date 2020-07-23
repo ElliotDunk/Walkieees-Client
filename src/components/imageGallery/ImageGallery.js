@@ -49,7 +49,7 @@ export default class ImageGallery extends PureComponent {
       <div className={styles.container}>
         <div ref={this.imgContainer} className={styles.imgContainer}>
           {this.props.images.map((image, index) => (
-            <img className={styles.image} style={this.state.imgStyle} key={index} src={image} alt="Cutest Dog Of The Week" />
+            <img className={styles.image} style={(this.state.imgStyle, { borderRadius: this.props.borderRadius !== null ? this.props.borderRadius : "" })} key={index} src={image} alt="Cutest Dog Of The Week" />
           ))}
         </div>
         <div className={styles.buttonContainer}>
@@ -76,4 +76,5 @@ export default class ImageGallery extends PureComponent {
 
 ImageGallery.protoTypes = {
   images: PropTypes.array,
+  borderRadius: PropTypes.string,
 };

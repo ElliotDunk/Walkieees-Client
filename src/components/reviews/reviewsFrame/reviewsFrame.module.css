@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.reviewNumber {
+  font-size: 5rem;
+}
+
+.reviewsAmount {
+  margin-top: 10px;
+}
+
+.barsContainer {
+  margin-top: 25px;
+}
+
+.reviewBarContainer {
+  margin-top: 6px;
+}
+
+.newButtonContainer {
+  margin-top: 25px;
+}
+
+.reviewBoxContainer {
+  margin-top: 25px;
+}
+
+.viewAllBtnContainer {
+  margin-top: 20px;
+  text-align: center;
+}

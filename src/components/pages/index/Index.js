@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FetchWalksSearch from "../../../api/fetchWalksSearch";
+import FetchWalksSearch from "../../../api/fetchManyWalks";
 import NavBar from "../../navBar/NavBar";
 import IndexMainVideo from "../../indexMainVideo/IndexMainVideo";
 import ContentTitle from "../../titles/contentTitle/ContentTitle";

@@ -44,7 +44,7 @@ export default class CutestDogFrame extends PureComponent {
           </div>
         </div>
         <div ref={this.rightContainer} style={{ height: this.state.rightContainerHeight }} className={styles.rightContainer}>
-          <ImageGallery images={images} />
+          <ImageGallery images={images} borderRadius="5px" />
         </div>
         <div className={styles.blockBtn}>
           <ButtonPrimary text="Nominate Your Dog" link="/" />

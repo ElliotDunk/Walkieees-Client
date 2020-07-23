@@ -11,3 +11,9 @@
 .walksNumber {
   margin: 25px 0 10px 0;
 }
+
+.mapContainer {
+  width: 100vw;
+  height: 350px;
+  margin: 50px 0;
+}
