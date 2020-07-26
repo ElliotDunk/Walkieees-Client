@@ -7,6 +7,8 @@ import ReviewStars from "../reviews/reviewStars/ReviewStars";
 import { ReactComponent as Bookmark } from "../../assets/svgs/bookmark.svg";
 import { ReactComponent as BookmarkFilled } from "../../assets/svgs/bookmarkFilled.svg";
 
+import ImageUrl from "../.../../../utils/imageTransformationUrl";
+
 export default class WalkCardVertical extends Component {
   constructor(props) {
     super(props);
@@ -25,10 +27,11 @@ export default class WalkCardVertical extends Component {
     if (this.props.searchCoordinates) {
       var distance = haversineFormula(this.props.latitude, this.props.longitude, this.props.searchCoordinates.latitude, this.props.searchCoordinates.longitude).toFixed();
     }
+    const resizedImage = this.props.image !== undefined ? ImageUrl({ imageUrls: this.props.image[0], width: "512px" }) : "";
     return (
       <div>
         <a className={styles.linkContainer} href={`/walks/${this.props.ID}`}>
-          <img className={styles.image} src={this.props.image} alt="Dog Walking Location" />
+          <img className={styles.image} src={resizedImage} alt="Dog Walking Location" />
           <div className={styles.bookmarkContainer}>
             <span className={styles.distance} onClick={(e) => e.preventDefault()}>
               {this.props.searchCoordinates ? distance + " Miles Away" : null}
