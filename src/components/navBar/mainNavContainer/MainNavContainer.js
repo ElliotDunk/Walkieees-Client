@@ -16,7 +16,7 @@ export default class MainContainer extends PureComponent {
             <SearchBar />
           </div>
           <div className={styles.accountBtnContainer}>
-            <AccountBtn />
+            <AccountBtn onClick={this.props.onSignInClick} />
           </div>
         </div>
       </div>

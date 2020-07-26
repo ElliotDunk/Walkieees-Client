@@ -68,7 +68,7 @@ export default class NavHeader extends PureComponent {
             </a>
           </div>
           <div className={styles.accountBtnContainer}>
-            <AccountBtn color="#ffffff" />
+            <AccountBtn onClick={this.props.onSignInClick} color="#ffffff" />
           </div>
         </div>
       </header>

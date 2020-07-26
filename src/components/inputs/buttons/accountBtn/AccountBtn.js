@@ -6,16 +6,14 @@ import styles from "./accountBtn.module.css";
 export default class AccountLink extends PureComponent {
   render() {
     return (
-      <a className={styles.a} href="/login">
-        <div className={styles.accountBtnContainer}>
-          <span style={{ color: this.props.color || "#282cdd" }} className={styles.span}>
-            Sign In
-          </span>
-          <div className={styles.logoContainer}>
-            <AccountLogo fill={this.props.color || "#282cdd"} />
-          </div>
+      <div className={styles.accountBtnContainer} onClick={this.props.onClick}>
+        <span style={{ color: this.props.color || "#282cdd" }} className={styles.span}>
+          Sign In
+        </span>
+        <div className={styles.logoContainer}>
+          <AccountLogo fill={this.props.color || "#282cdd"} />
         </div>
-      </a>
+      </div>
     );
   }
 }
