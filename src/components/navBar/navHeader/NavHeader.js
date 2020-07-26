@@ -3,9 +3,20 @@ import Logo from "../../logo/Logo";
 import AccountBtn from "../../inputs/buttons/accountBtn/AccountBtn";
 import styles from "./navHeader.module.css";
 
-import { ReactComponent as Menu } from "../../../assets/svgs/bars.svg";
-
 export default class NavHeader extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobileMenuOpen: false,
+    };
+  }
+
+  menuBtnClick = (e) => {
+    const mobileMenuOpen = this.state.mobileMenuOpen;
+    this.setState({ mobileMenuOpen: !mobileMenuOpen });
+    this.props.menuBtnClick();
+  };
+
   render() {
     return (
       <header className={styles.navHeader}>
@@ -31,9 +42,27 @@ export default class NavHeader extends PureComponent {
             </a>
           </li>
         </ol>
+        <ul className={styles.mobileLinksListContainer}>
+          <li>
+            <a href="/">Walks</a>
+          </li>
+          <li>
+            <a href="/">Services</a>
+          </li>
+          <li>
+            <a href="/">Welfare</a>
+          </li>
+          <li>
+            <a href="/">More</a>
+          </li>
+        </ul>
         <div className={styles.mobileNavHeader}>
           <div className={styles.mobileNavHeadInnerContainer}>
-            <Menu className={styles.menuBtn} fill="#ffffff" />
+            <div onClick={this.menuBtnClick} className={`${styles.hamburger} ${styles.hamburgerCollapse} ${this.state.mobileMenuOpen ? styles.isActive : ""}`} type="button">
+              <span className={styles.hamburgerBox}>
+                <span className={styles.hamburgerInner}></span>
+              </span>
+            </div>
             <a href="/" className={styles.logo}>
               <Logo color="white" fontSize="1.5rem" />
             </a>
