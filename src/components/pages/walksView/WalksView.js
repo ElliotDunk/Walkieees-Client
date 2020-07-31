@@ -46,6 +46,7 @@ export default class WalksView extends Component {
       center: [longitude, latitude],
       zoom: 12,
     });
+    // eslint-disable-next-line
     const marker = new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
   }
 

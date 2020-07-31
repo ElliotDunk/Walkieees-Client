@@ -57,6 +57,7 @@ export default class WalksSearch extends Component {
       });
 
       this.state.walksData.forEach((walk) => {
+        // eslint-disable-next-line
         const marker = new mapboxgl.Marker().setLngLat([walk.location.coordinates[0], walk.location.coordinates[1]]).addTo(map);
       });
     }
