@@ -75,7 +75,9 @@ export default class FooterSmall extends PureComponent {
                 <EmailSubscription />
               </div>
               <div className={styles.spacer}></div>
-              <ButtonPrimary text="Subscribe" color="#ffffff" width="250px" textColor="#282cdd" />
+              <div className={styles.subscribeButtonContainer}>
+                <ButtonPrimary text="Subscribe" color="#ffffff" width="250px" textColor="#282cdd" />
+              </div>
             </form>
           </div>
         </div>

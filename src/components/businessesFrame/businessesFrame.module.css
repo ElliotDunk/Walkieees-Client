@@ -26,6 +26,11 @@
   color: black;
 }
 
+.buttonContainer {
+  width: 150px;
+  height: 30px;
+}
+
 @media only screen and (max-width: 750px) {
   .container {
     display: block;
@@ -48,5 +53,9 @@
 
   .title {
     text-align: center;
+  }
+
+  .buttonContainer {
+    margin: 0 auto;
   }
 }

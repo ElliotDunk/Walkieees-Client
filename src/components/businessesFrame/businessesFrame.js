@@ -12,7 +12,9 @@ export default class businessesFrame extends PureComponent {
         <div className={styles.textContainer}>
           <h1 className={styles.title}>Looking For Local Dog Businesses In Your Area? Don't Worry We've Got You Coverred.</h1>
           <p className={styles.paragraph}>We have 100s of businesses waiting for you whether you need dog grooming, kennels, or someone to walk your best freind for you, they're all on here for you to find.</p>
-          <ButtonPrimary text="Learn More" link="/" />
+          <div className={styles.buttonContainer}>
+            <ButtonPrimary text="Learn More" onClick="/" />
+          </div>
         </div>
         <img className={styles.mobileImage} src={servicesImage} alt="" />
       </div>

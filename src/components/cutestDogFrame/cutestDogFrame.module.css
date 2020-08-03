@@ -23,8 +23,16 @@
   margin-left: 25px;
 }
 
-.blockBtn {
+.blockButtonContainer {
   display: none;
+  width: 200px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.flexButtonContainer {
+  width: 200px;
+  height: 30px;
 }
 
 @media only screen and (max-width: 750px) {
@@ -50,11 +58,11 @@
     margin: 25px auto;
   }
 
-  .flexBtn {
+  .flexButtonContainer {
     display: none;
   }
 
-  .blockBtn {
+  .blockButtonContainer {
     display: block;
   }
 }

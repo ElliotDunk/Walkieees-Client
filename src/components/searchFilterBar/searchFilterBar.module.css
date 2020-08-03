@@ -19,3 +19,8 @@
 .textInput::placeholder {
   padding-left: 2px;
 }
+
+.buttonContainer {
+  width: 150px;
+  height: 30px;
+}

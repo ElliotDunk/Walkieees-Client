@@ -39,15 +39,15 @@ export default class CutestDogFrame extends PureComponent {
         <div className={styles.leftContainer}>
           <h1 className={styles.title}>Donny The Long Haired Mutt</h1>
           <p>Meet Donny The Long Haired Mutt, a Cavalier King Charles Spaniel aged 8 who loves nothing more than long walks in the sun with his owner Sally.</p>
-          <div className={styles.flexBtn}>
-            <ButtonPrimary text="Nominate Your Dog" link="/" />
+          <div className={styles.flexButtonContainer}>
+            <ButtonPrimary text="Nominate Your Dog" onClick="/" />
           </div>
         </div>
         <div ref={this.rightContainer} style={{ height: this.state.rightContainerHeight }} className={styles.rightContainer}>
           <ImageGallery images={images} borderRadius="5px" />
         </div>
-        <div className={styles.blockBtn}>
-          <ButtonPrimary text="Nominate Your Dog" link="/" />
+        <div className={styles.blockButtonContainer}>
+          <ButtonPrimary text="Nominate Your Dog" onClick="/" />
         </div>
       </div>
     );

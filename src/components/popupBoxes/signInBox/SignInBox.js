@@ -19,7 +19,7 @@ export default class SignInBox extends PureComponent {
           <div className={styles.textInputContainer}>
             <TextInput placeholder="Password" type="password" />
           </div>
-          <div className={styles.primaryBtnContainer}>
+          <div className={styles.continueBtnContainer}>
             <ButtonPrimary text="Continue" width="262px" height="40px" textSize="0.8rem" />
           </div>
           <div className={styles.lineBreakContainer}>

@@ -18,6 +18,9 @@
 }
 
 .mainBtn {
+  width: 150px;
+  height: 30px;
+  margin: 0 auto;
   text-align: center;
 }
 
