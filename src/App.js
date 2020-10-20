@@ -5,9 +5,11 @@ import WalksSearch from "./components/pages/walksSearch/WalksSearch";
 import WalksView from "./components/pages/walksView/WalksView";
 import PrivacyPolicy from "./components/pages/privacyPolicy/PrivacyPolicy";
 import Terms from "./components/pages/terms/Terms";
+import ValidateSession from "./session/validateSession";
 import "./App.css";
 
 function App() {
+  ValidateSession();
   return (
     <BrowserRouter>
       <Switch>

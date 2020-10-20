@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default function FetchWalk(id) {
-  const API_URL = "http://192.168.1.105:5000/api/walks";
+  const API_URL = "/api/walks";
 
   return new Promise((resolve, reject) => {
     axios

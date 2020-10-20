@@ -28,9 +28,9 @@ export default class SearchBar extends PureComponent {
     }
   }
 
-  updateInputValue(evt) {
+  updateInputValue(e) {
     this.setState({
-      inputValue: evt.target.value,
+      inputValue: e.target.value,
     });
   }
 
@@ -47,7 +47,7 @@ export default class SearchBar extends PureComponent {
           </div>
           <div className={styles.verticalLine}></div>
           <div className={styles.inputContainer}>
-            <input value={this.state.inputValue} onChange={(evt) => this.updateInputValue(evt)} className={styles.input} type="text" name="location" placeholder="Enter a Location" />
+            <input value={this.state.inputValue} onChange={(e) => this.updateInputValue(e)} className={styles.input} type="text" name="location" placeholder="Enter a Location" />
           </div>
           <button className={styles.searchBtnContainer}>
             <SearchIcon fill="#282cdd" className={styles.searchBtn} />

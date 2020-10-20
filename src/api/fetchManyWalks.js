@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default function FetchWalksSearch({ location, latitude, longitude, minDistance, maxDistance, limit }) {
-  const API_URL = "http://192.168.1.105:5000/api/walks";
+  const API_URL = "/api/walks";
   const locationQuery = typeof location === "undefined" ? "" : "&location=" + location;
   const latQuery = typeof latitude === "undefined" ? "" : "&lat=" + latitude;
   const lngQuery = typeof longitude === "undefined" ? "" : "&lng=" + longitude;

@@ -59,7 +59,7 @@ WalkCardVertical.propTypes = {
   latitude: PropTypes.number,
   longitude: PropTypes.number,
   searchCoordinates: PropTypes.object,
-  image: PropTypes.string,
+  image: PropTypes.array,
   title: PropTypes.string,
   location: PropTypes.string,
   rating: PropTypes.number,

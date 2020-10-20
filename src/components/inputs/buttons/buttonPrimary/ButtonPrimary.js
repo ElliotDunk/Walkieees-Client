@@ -14,7 +14,7 @@ class ButtonPrimary extends PureComponent {
   render() {
     return (
       <div className={styles.container}>
-        <button type="button" onClick={this.onClick} style={{ fontSize: this.props.fontSize || "", backgroundColor: this.props.color || "#282cdd", color: this.props.textColor || "white" }} className={styles.button}>
+        <button type={this.props.type || "button"} onClick={this.onClick} style={{ fontSize: this.props.fontSize || "", backgroundColor: this.props.color || "#282cdd", color: this.props.textColor || "white" }} className={styles.button}>
           {this.props.text}
         </button>
       </div>
@@ -29,5 +29,6 @@ ButtonPrimary.propTypes = {
   textColor: PropTypes.string,
   color: PropTypes.string,
   fontSize: PropTypes.string,
-  onClick: PropTypes.string || PropTypes.func,
+  onClick: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  type: PropTypes.string,
 };

@@ -5,7 +5,7 @@ export default class SingleLineTextInput extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <input className={styles.input} placeholder={this.props.placeholder} type={this.props.type}></input>
+        <input className={styles.input} placeholder={this.props.placeholder} name={this.props.name} type={this.props.type} onChange={this.props.onChange}></input>
       </React.Fragment>
     );
   }
