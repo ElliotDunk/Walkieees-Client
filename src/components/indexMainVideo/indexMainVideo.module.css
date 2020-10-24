@@ -14,6 +14,7 @@
 }
 
 .contentContainer {
+  width: 100%;
   color: white;
   position: absolute;
   top: 50%;
@@ -23,7 +24,6 @@
 }
 
 .slogan {
-  width: 100vw;
   color: white;
   text-align: center;
   font-size: 4.5rem;

@@ -50,7 +50,11 @@ export default class SignInBox extends PureComponent {
     if (confirmPasswordValidation.error === true) return this.setState({ text: confirmPasswordValidation.message, textColor: "red" });
     if (DOBValidation.error === true) return this.setState({ text: DOBValidation.message, textColor: "red" });
     if (termsValidation.error === true) return this.setState({ text: termsValidation.message, textColor: "red" });
-    PostRegistration(this.state.inputs);
+    try {
+      PostRegistration(this.state.inputs);
+    } catch {
+      this.setState({ text: "Registration did not complete", textColor: "red" });
+    }
   };
 
   render() {

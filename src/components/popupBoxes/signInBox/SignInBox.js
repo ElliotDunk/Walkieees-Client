@@ -34,9 +34,11 @@ export default class SignInBox extends PureComponent {
     const emailValidation = Validate.email(this.state.inputs.email);
     if (emailValidation.error === true) return this.setState({ text: emailValidation.message, textColor: "red" });
     if (this.state.inputs.password <= 0) return this.setState({ text: "Password cannot be blank.", textColor: "red" });
-    const loginResult = await PostLogin(this.state.inputs);
-    if (loginResult.status === 200) return;
-    if (loginResult.status === 401) return this.setState({ text: "Email or password incorrect.", textColor: "red" });
+    try {
+      await PostLogin(this.state.inputs);
+    } catch {
+      this.setState({ text: "Email or password incorrect.", textColor: "red" });
+    }
   };
 
   render() {

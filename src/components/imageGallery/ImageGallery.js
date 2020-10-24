@@ -47,9 +47,9 @@ export default class ImageGallery extends PureComponent {
     circles[this.state.currentImage] = <CircleFilled className={styles.circle} key={999} fill="#282cdd" />;
     return (
       <div className={styles.container}>
-        <div ref={this.imgContainer} className={styles.imgContainer}>
+        <div ref={this.imgContainer} className={styles.imgContainer} style={{ borderRadius: this.props.borderRadius !== null ? this.props.borderRadius : "" }}>
           {this.props.images.map((image, index) => (
-            <img className={styles.image} style={(this.state.imgStyle, { borderRadius: this.props.borderRadius !== null ? this.props.borderRadius : "" })} key={index} src={image} alt="Cutest Dog Of The Week" />
+            <img className={styles.image} style={this.state.imgStyle} key={index} src={image} alt="Cutest Dog Of The Week" />
           ))}
         </div>
         <div className={styles.buttonContainer}>
