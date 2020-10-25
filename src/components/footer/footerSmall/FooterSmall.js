@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import Logo from "../../logo/Logo";
-import EmailSubscription from "../../emailSubscription/EmailSubscription";
+import EmailSubscription from "../../inputs/textInput/emailSubscription/EmailSubscription";
 import ButtonPrimary from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
 import LowerFooter from "../lowerFooter/lowerFooterBlock/LowerFooterBlock";
 import styles from "./footerSmall.module.css";

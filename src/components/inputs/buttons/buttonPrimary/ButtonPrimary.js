@@ -11,6 +11,7 @@ class ButtonPrimary extends PureComponent {
       this.props.onClick();
     }
   };
+
   render() {
     return (
       <div className={styles.container}>

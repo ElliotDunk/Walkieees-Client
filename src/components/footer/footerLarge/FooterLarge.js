@@ -1,13 +1,30 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import Logo from "../../logo/Logo";
-import EmailSubscription from "../../emailSubscription/EmailSubscription";
+import EmailSubscription from "../../inputs/textInput/emailSubscription/EmailSubscription";
+import PostEmailSubscription from "../../../api/postEmailSubscription.js";
 import ButtonPrimary from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
 import LowerFooter from "../lowerFooter/lowerFooterFlex/LowerFooterFlex";
 import styles from "./footerLarge.module.css";
 
 import { ReactComponent as Envelope } from "../../../assets/svgs/envelope.svg";
 
-export default class FooterLarge extends PureComponent {
+export default class FooterLarge extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      subscriptionText: "",
+    };
+    this.handleSubscriptionClick = this.handleSubscriptionClick.bind(this);
+  }
+
+  handleSubscriptionClick() {
+    PostEmailSubscription(this.state.subscriptionText);
+  }
+
+  handleSubscriptionChange(event) {
+    this.setState({ subscriptionText: event.target.value });
+  }
+
   render() {
     return (
       <div className={styles.container}>
@@ -67,9 +84,9 @@ export default class FooterLarge extends PureComponent {
             <h3 className={styles.title}>Subscribe For More Info</h3>
             <div className={styles.spacer}></div>
             <form action="/" method="POST">
-              <EmailSubscription />
+              <EmailSubscription onChange={(event) => this.handleSubscriptionChange(event)} />
               <div className={styles.spacer}></div>
-              <ButtonPrimary text="Subscribe" color="#ffffff" width="250px" textColor="#282cdd" />
+              <ButtonPrimary text="Subscribe" color="#ffffff" width="250px" textColor="#282cdd" onClick={this.handleSubscriptionClick} />
             </form>
           </div>
         </div>
