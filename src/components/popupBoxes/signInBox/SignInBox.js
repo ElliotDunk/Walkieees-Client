@@ -19,6 +19,7 @@ export default class SignInBox extends PureComponent {
       text: "Login with your email & password",
       textColor: "grey",
     };
+    this.keyPress = this.keyPress.bind(this);
   }
 
   handleInputChange = (event) => {
@@ -41,6 +42,13 @@ export default class SignInBox extends PureComponent {
     }
   };
 
+  keyPress(e) {
+    //If enter key is pressed while input is selected
+    if (e.keyCode === 13) {
+      this.handleButtonClick();
+    }
+  }
+
   render() {
     return (
       <div className={styles.container} onClick={this.props.onBackgroundClick}>
@@ -50,13 +58,13 @@ export default class SignInBox extends PureComponent {
             {this.state.text}
           </span>
           <div className={styles.textInputContainer}>
-            <TextInput placeholder="Email" type="email" name="email" onChange={this.handleInputChange} />
+            <TextInput placeholder="Email" type="email" name="email" onChange={this.handleInputChange} onKeyDown={this.keyPress} />
           </div>
           <div className={styles.textInputContainer}>
-            <TextInput placeholder="Password" type="password" name="password" onChange={this.handleInputChange} />
+            <TextInput placeholder="Password" type="password" name="password" onChange={this.handleInputChange} onKeyDown={this.keyPress} />
           </div>
           <div className={styles.continueBtnContainer}>
-            <ButtonPrimary text="Continue" width="262px" height="40px" textSize="0.8rem" onClick={this.handleButtonClick} />
+            <ButtonPrimary text="Log In" width="262px" height="40px" textSize="0.8rem" onClick={this.handleButtonClick} />
           </div>
           <div className={styles.lineBreakContainer}>
             <hr />

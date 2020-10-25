@@ -12,15 +12,18 @@ export default function PostRegistration(formData) {
         },
       })
       .then((response) => {
-        if (response.status === 201) {
-          resolve(response.data);
-        } else {
-          reject(null);
+        try {
+          localStorage.setItem("sessionID", response.headers["session"]);
+          localStorage.setItem("expiration", parseFloat(response.headers["expiration-time"]) + Date.now());
+          localStorage.setItem("userID", response.headers["user-id"]);
+          window.location.reload();
+        } catch (err) {
+          console.error(err);
         }
+        resolve(response.status);
       })
       .catch((error) => {
-        console.error(error);
-        reject(null);
+        reject(error.response.status);
       });
   });
 }

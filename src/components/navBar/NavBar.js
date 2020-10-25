@@ -101,7 +101,7 @@ export default class NavBar extends PureComponent {
         </div>
         <div className={styles.topSpacer}></div>
         <div style={{ transform: `translateY(${containerTranslation})` }} className={styles.container}>
-          <Header menuBtnClick={this.menuBtnClick} onSignInClick={this.signInClick} />
+          <Header menuBtnClick={this.menuBtnClick} onSignInClick={this.signInClick} accountBoxOpen={this.state.accountBoxOpen} />
           <MainNavContainer onSignInClick={this.signInClick} accountBoxOpen={this.state.accountBoxOpen} />
         </div>
         <div style={{ display: this.props.relative === true ? "none" : "block" }} className={styles.relativeSpacer}></div>

@@ -36,7 +36,7 @@ export default class Validate {
   }
 
   static terms(terms) {
-    if (terms !== "on") return { error: true, message: "You must agree to the terms." };
+    if (!terms) return { error: true, message: "You must agree to the terms." };
     return { error: false };
   }
 }

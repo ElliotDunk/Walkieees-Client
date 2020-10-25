@@ -7,8 +7,13 @@
   display: flex;
   min-width: 135px;
   cursor: pointer;
-  justify-content: flex-end;
   padding-right: 10px;
+}
+
+@media only screen and (max-width: 750px) {
+  .accountBtnContainer {
+    justify-content: flex-end;
+  }
 }
 
 .logoContainer {
