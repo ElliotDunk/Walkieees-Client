@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Validate from "../../../utils/validation";
-import PostRegistration from "../../../api/postRegistration";
+import Authenticate from "../../../api/authentication";
 import TextInput from "../../inputs/textInput/singleLineTextInput/SingleLineTextInput";
 import DateInput from "../../inputs/textInput/dateInput/DateInput";
 import ButtonPrimary from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
@@ -61,9 +61,10 @@ export default class SignInBox extends Component {
     if (DOBValidation.error === true) return this.setState({ text: DOBValidation.message, textColor: "red" });
     if (termsValidation.error === true) return this.setState({ text: termsValidation.message, textColor: "red" });
     //Post registration if between 200 and 300
-    await PostRegistration(this.state.inputs).then((result) => {
+    await Authenticate.register(this.state.inputs).catch((result) => {
+      console.log(result);
+      if (result === 409) return this.setState({ text: "This email is already registered", textColor: "red" });
       if (result !== 201) return this.setState({ text: "Registration did not complete", textColor: "red" });
-      return;
     });
   };
 

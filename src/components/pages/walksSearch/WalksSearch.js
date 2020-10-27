@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import queryString from "query-string";
 import mapboxgl from "mapbox-gl";
-import FetchWalksSearch from "../../../api/fetchManyWalks";
+import WalksAPI from "../../../api/walks";
 import metersToMiles from "../../../utils/metersToMiles";
 import haversineMiles from "../../../utils/haversineFormula";
 
@@ -33,7 +33,7 @@ export default class WalksSearch extends Component {
     await this.setQueryStates();
 
     try {
-      const fetchedData = await FetchWalksSearch({ location: this.state.searchLocation, minDistance: this.state.minDistance, maxDistance: this.state.maxDistance, limit: this.state.limit });
+      const fetchedData = await WalksAPI.fetchManyWalks({ location: this.state.searchLocation, minDistance: this.state.minDistance, maxDistance: this.state.maxDistance, limit: this.state.limit });
       this.setState({ geocodeCoordinates: fetchedData.coordinates, geocodeLocation: fetchedData.location }, async () => {
         const walksIncDistance = await this.addDistanceToWalks(fetchedData.walks);
         const sortedDistanceWalks = this.sortedWalks("Closest", walksIncDistance);
@@ -94,7 +94,7 @@ export default class WalksSearch extends Component {
   searchFilterUpdateEvent = async (sort, distance, keywords) => {
     const distanceNum = distance !== undefined && !isNaN(parseInt(distance)) ? parseInt(distance) : this.state.maxDistance;
     try {
-      const fetchedData = await FetchWalksSearch({ location: this.state.searchLocation, maxDistance: distanceNum });
+      const fetchedData = await WalksAPI.fetchManyWalks({ location: this.state.searchLocation, maxDistance: distanceNum });
       const walksIncDistance = await this.addDistanceToWalks(fetchedData.walks);
       this.setState({
         walksData: this.keywordsFilter(keywords, this.sortedWalks(sort, walksIncDistance)),

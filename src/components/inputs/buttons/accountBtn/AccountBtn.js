@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import LogOut from "../../../../api/postLogout";
+import Authenticate from "../../../../api/authentication";
 import { ReactComponent as AccountLogo } from "../../../../assets/svgs/account-logo.svg";
 import { ReactComponent as DownArrow } from "../../../../assets/svgs/chevron.svg";
 import styles from "./accountBtn.module.css";
@@ -20,7 +20,7 @@ export default class AccountLink extends Component {
   };
 
   logOut = () => {
-    LogOut();
+    Authenticate.logout();
   };
 
   render() {

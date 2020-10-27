@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import FetchWalk from "../../../api/fetchWalk";
-import FetchWalksMany from "../../../api/fetchManyWalks";
+import WalksAPI from "../../../api/walks";
 import mapboxgl from "mapbox-gl";
 import moment from "moment";
 import NavBar from "../../navBar/NavBar";
@@ -31,10 +30,10 @@ export default class WalksView extends Component {
 
   async componentDidMount() {
     const id = window.location.pathname.replace("/walks/", "");
-    const walk = await FetchWalk(id);
+    const walk = await WalksAPI.fetchWalk(id);
     this.setState({ walk });
 
-    const nearbyWalks = await FetchWalksMany({ latitude: walk.location.coordinates[0], longitude: walk.location.coordinates[1], maxDistance: 5000000, limit: 5 });
+    const nearbyWalks = await WalksAPI.fetchManyWalks({ latitude: walk.location.coordinates[0], longitude: walk.location.coordinates[1], maxDistance: 5000000, limit: 5 });
     this.setState({ nearbyWalks });
 
     const longitude = this.state.walk !== undefined ? this.state.walk.location.coordinates[0] : "50.8225";

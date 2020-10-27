@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import Validate from "../../../utils/validation";
-import PostLogin from "../../../api/postLogin";
+import Authenticate from "../../../api/authentication";
 import TextInput from "../../inputs/textInput/singleLineTextInput/SingleLineTextInput";
 import ButtonPrimary from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
 import FacebookButton from "../../inputs/buttons/facebookContinueButton/FacebookContinueButton";
@@ -36,7 +36,7 @@ export default class SignInBox extends PureComponent {
     if (emailValidation.error === true) return this.setState({ text: emailValidation.message, textColor: "red" });
     if (this.state.inputs.password <= 0) return this.setState({ text: "Password cannot be blank.", textColor: "red" });
     try {
-      await PostLogin(this.state.inputs);
+      await Authenticate.login(this.state.inputs);
     } catch {
       this.setState({ text: "Email or password incorrect.", textColor: "red" });
     }

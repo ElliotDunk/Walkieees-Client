@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Logo from "../../logo/Logo";
 import EmailSubscription from "../../inputs/textInput/emailSubscription/EmailSubscription";
-import PostEmailSubscription from "../../../api/postEmailSubscription.js";
+import EmailSubscriptionAPI from "../../../api/emailSubscription.js";
 import ButtonPrimary from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
 import LowerFooter from "../lowerFooter/lowerFooterFlex/LowerFooterFlex";
 import styles from "./footerLarge.module.css";
@@ -18,7 +18,7 @@ export default class FooterLarge extends Component {
   }
 
   handleSubscriptionClick() {
-    PostEmailSubscription(this.state.subscriptionText);
+    EmailSubscriptionAPI(this.state.subscriptionText);
   }
 
   handleSubscriptionChange(event) {
