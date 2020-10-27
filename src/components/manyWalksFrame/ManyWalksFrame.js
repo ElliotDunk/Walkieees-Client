@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import LoadingCircle from "../loadingCircle/LoadingCircle";
 import WalkCard from "../walkCard/WalkCard";
-import styles from "./walksFrame.module.css";
+import styles from "./manyWalksFrame.module.css";
 
 export default class WalksFrame extends PureComponent {
   render() {

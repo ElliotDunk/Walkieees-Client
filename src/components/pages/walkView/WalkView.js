@@ -7,10 +7,10 @@ import ImageGallery from "../../imageGallery/ImageGallery";
 import ReviewStars from "../../reviews/reviewStars/ReviewStars";
 import ReviewsFrame from "../../reviews/reviewsFrame/ReviewsFrame";
 import ContentTitle from "../../titles/contentTitle/ContentTitle";
-import WalksFrame from "../../walksFrame/WalksFrame";
+import ManyWalkFrame from "../../manyWalksFrame/ManyWalksFrame";
 import ButtonPrimary from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
 import Footer from "../../footer/Footer";
-import styles from "./walksView.module.css";
+import styles from "./walkView.module.css";
 
 import { ReactComponent as Bookmark } from "../../../assets/svgs/bookmark.svg";
 import { ReactComponent as HeartUnfileld } from "../../../assets/svgs/heartUnfilled.svg";
@@ -129,7 +129,7 @@ export default class WalksView extends Component {
         <div className={styles.nearbyWalksContainer}>
           <ContentTitle text="Nearby Walks" />
           <div className={styles.walksFrameContainer}>
-            <WalksFrame searchCoordinates={{ latitude, longitude }} walksArr={this.state.nearbyWalks !== null ? this.state.nearbyWalks.walks.slice(1, 5) : null} />
+            <ManyWalkFrame searchCoordinates={{ latitude, longitude }} walksArr={this.state.nearbyWalks !== null ? this.state.nearbyWalks.walks.slice(1, 5) : null} />
           </div>
           <div className={styles.nearbyWalksBtnContainer}>
             <ButtonPrimary text="View More" />

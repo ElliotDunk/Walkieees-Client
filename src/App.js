@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Index from "./components/pages/index/Index";
 import WalksSearch from "./components/pages/walksSearch/WalksSearch";
-import WalksView from "./components/pages/walksView/WalksView";
+import WalkView from "./components/pages/walkView/WalkView";
 import PrivacyPolicy from "./components/pages/privacyPolicy/PrivacyPolicy";
 import Terms from "./components/pages/terms/Terms";
 import ValidateSession from "./session/validateSession";
@@ -20,7 +20,7 @@ function App() {
           <WalksSearch />
         </Route>
         <Route path="/walks/:id">
-          <WalksView />
+          <WalkView />
         </Route>
         <Route path="/privacy">
           <PrivacyPolicy />

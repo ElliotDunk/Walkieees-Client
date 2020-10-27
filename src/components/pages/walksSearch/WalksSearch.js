@@ -7,7 +7,7 @@ import haversineMiles from "../../../utils/haversineFormula";
 
 import styles from "./walksSearch.module.css";
 import NavBar from "../../navBar/NavBar";
-import WalksFrame from "../../walksFrame/WalksFrame";
+import manyWalksFrame from "../../manyWalksFrame/ManyWalksFrame";
 import Footer from "../../footer/Footer";
 import WalksSearchText from "./walksSearchText/WalksSearchText";
 import SearchFilterBar from "../../searchFilterBar/SearchFilterBar";
@@ -165,7 +165,7 @@ export default class WalksSearch extends Component {
               <SearchFilterBar onUpdate={this.searchFilterUpdateEvent} />
             </div>
           </div>
-          <WalksFrame searchCoordinates={this.state.geocodeCoordinates} walksArr={this.state.walksData !== null ? this.state.walksData.slice(this.state.walksPerFrame * this.state.currentFrame - this.state.walksPerFrame, this.state.walksPerFrame * this.state.currentFrame) : null} />
+          <manyWalksFrame searchCoordinates={this.state.geocodeCoordinates} walksArr={this.state.walksData !== null ? this.state.walksData.slice(this.state.walksPerFrame * this.state.currentFrame - this.state.walksPerFrame, this.state.walksPerFrame * this.state.currentFrame) : null} />
           <div style={{ display: this.state.walksData !== null ? "block" : "none" }}>
             <FrameSwitcher currentFrame={this.state.currentFrame} maxFrame={this.state.walksData !== null ? Math.ceil(this.state.walksData.length / this.state.walksPerFrame) : null} onBackClick={this.onBackClick} onNextClick={this.onNextClick} />
           </div>

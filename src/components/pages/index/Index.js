@@ -10,7 +10,7 @@ import RescueCenterFrame from "../../rescueCenterFrame/RescueCenterFrame";
 import Footer from "../../footer/Footer";
 import styles from "./index.module.css";
 
-import WalksFrame from "../../walksFrame/WalksFrame";
+import WalksSearchFrame from "../../manyWalksFrame/ManyWalksFrame";
 import PrimaryButton from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
 
 export default class Index extends Component {
@@ -50,7 +50,7 @@ export default class Index extends Component {
         <div className={styles.topSpacer}></div>
         <ContentTitle text="Explore Popular Walks" />
         <div className={styles.frameContainer}>
-          <WalksFrame walksArr={this.state.walksData} endIndex={this.state.walksSize} />
+          <WalksSearchFrame walksArr={this.state.walksData} endIndex={this.state.walksSize} />
           <div className={styles.popularWalksButtonContainer}>
             <PrimaryButton text="View More" onClick="/" />
           </div>
