@@ -7,7 +7,9 @@
 }
 
 .selectionContainer {
-  width: 150px;
+  width: 130px;
+  min-width: 130px;
+  max-width: 130px;
   height: 100%;
   border-radius: 5px;
   display: flex;
@@ -18,7 +20,7 @@
 
 .selectionText {
   color: #282cdd;
-  font-weight: 500;
+  font-weight: 400;
   user-select: none;
 }
 
@@ -71,18 +73,28 @@
 
 .dropDownBox {
   display: block;
-  width: 150px;
+  width: 135px;
   height: auto;
   border: #d8d8d8 1px solid;
   border-radius: 5px;
-  margin-top: 5px;
+  margin-top: -1px;
   background-color: white;
   text-align: center;
   transition: 0.5s;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .dropDownText {
   color: #282cdd;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
+  margin: 10px 0;
+}
+
+.lineBreak {
+  width: 80%;
+  height: 1px;
+  margin: 0 auto;
+  background-color: #282cdd;
 }

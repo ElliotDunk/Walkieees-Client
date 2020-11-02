@@ -62,6 +62,7 @@ export default class Index extends Component {
         <div className={styles.fullFrameContainer}>
           <WelfareFrame />
         </div>
+        <div className={styles.middleSpacer}></div>
         <ContentTitle text="Meet The Cutest Dog Of The Week" />
         <div className={styles.frameContainer}>
           <CutestDogFrame />

@@ -5,12 +5,16 @@ export default function PostEmailSubscription(email) {
 
   return new Promise((resolve, reject) => {
     axios
-      .post(API_URL, {
-        email: email,
-        permissions: {
-          marketingEmails: true,
+      .post(
+        API_URL,
+        {
+          email: email,
+          permissions: {
+            marketingEmails: true,
+          },
         },
-      })
+        { withCredentials: true }
+      )
       .then((response) => {
         alert(`${email} has been subscribed.`);
         resolve(response);

@@ -3,17 +3,19 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Index from "./components/pages/index/Index";
 import WalksSearch from "./components/pages/walksSearch/WalksSearch";
 import WalkView from "./components/pages/walkView/WalkView";
+import Registration from "./components/pages/registration/Registration";
 import PrivacyPolicy from "./components/pages/privacyPolicy/PrivacyPolicy";
 import Terms from "./components/pages/terms/Terms";
-import ValidateSession from "./session/validateSession";
 import "./App.css";
 
 function App() {
-  ValidateSession();
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
+          <Index />
+        </Route>
+        <Route exact path="/#_=_">
           <Index />
         </Route>
         <Route path="/walks/search">
@@ -21,6 +23,9 @@ function App() {
         </Route>
         <Route path="/walks/:id">
           <WalkView />
+        </Route>
+        <Route path="/register/:data?">
+          <Registration />
         </Route>
         <Route path="/privacy">
           <PrivacyPolicy />

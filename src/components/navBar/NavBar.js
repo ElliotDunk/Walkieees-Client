@@ -5,6 +5,7 @@ import MainNavContainer from "./mainNavContainer/MainNavContainer";
 import SignInBox from "../popupBoxes/signInBox/SignInBox";
 import RegistrationBox from "../popupBoxes/registrationBox/RegistrationBox";
 import styles from "./navBar.module.css";
+import authenticationCheck from "../../utils/authenticationCheck";
 
 export default class NavBar extends PureComponent {
   constructor(props) {
@@ -27,7 +28,7 @@ export default class NavBar extends PureComponent {
   }
 
   componentDidMount() {
-    if (localStorage.getItem("sessionID")) {
+    if (authenticationCheck()) {
       this.setState({ loggedIn: true });
     } else {
       this.setState({ loggedIn: false });
@@ -35,7 +36,7 @@ export default class NavBar extends PureComponent {
   }
 
   componentDidUpdate() {
-    if (localStorage.getItem("sessionID")) {
+    if (authenticationCheck()) {
       this.setState({ loggedIn: true });
     } else {
       this.setState({ loggedIn: false });

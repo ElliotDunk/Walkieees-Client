@@ -40,7 +40,7 @@ export default class SearchBar extends PureComponent {
     const businessesBtnStyle = this.state.searchType === "Businesses" ? { color: "gray", cursor: "default" } : { color: "#282cdd" };
     return (
       <form action={"/walks/search?"} method="GET">
-        <div className={styles.container}>
+        <div style={{ borderBottomLeftRadius: this.state.dropDownOpen ? "0" : "5px" }} className={styles.container}>
           <div className={styles.selectionContainer} onClick={() => this.dropDownClick()}>
             <span className={styles.selectionText}>{this.state.searchType}</span>
             <DownArrow fill="#282cdd" className={styles.downArrow} />
@@ -57,6 +57,7 @@ export default class SearchBar extends PureComponent {
           <p style={walksBtnStyle} className={styles.dropDownText} onClick={() => this.searchTypeClicked("Walks")}>
             Walks
           </p>
+          <div className={styles.lineBreak}></div>
           <p style={businessesBtnStyle} className={styles.dropDownText} onClick={() => this.searchTypeClicked("Businesses")}>
             Businesses
           </p>

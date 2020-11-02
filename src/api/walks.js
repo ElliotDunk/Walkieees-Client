@@ -6,7 +6,7 @@ export default class Walks {
   static fetchWalk(id) {
     return new Promise((resolve, reject) => {
       axios
-        .get(`${API_URL}/${id}`)
+        .get(`${API_URL}/${id}`, { withCredentials: true })
         .then((response) => {
           resolve(response.data);
         })
@@ -26,7 +26,7 @@ export default class Walks {
 
     return new Promise((resolve, reject) => {
       axios
-        .get(`${API_URL}/search?${locationQuery}${latQuery}${lngQuery}${minDistQuery}${maxDistQuery}${limitQuery}`)
+        .get(`${API_URL}/search?${locationQuery}${latQuery}${lngQuery}${minDistQuery}${maxDistQuery}${limitQuery}`, { withCredentials: true })
         .then((response) => {
           resolve(response.data);
         })
