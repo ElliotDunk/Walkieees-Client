@@ -76,9 +76,7 @@ export default class Registration extends Component {
     if (termsValidation.error === true) return this.setState({ text: termsValidation.message, textColor: "red" });
     //Post registration if between 200 and 300
     await Authenticate.registerAuth({ ...this.state.inputs, ...this.state.authData })
-      .then(() => {
-        this.props.history.push("/");
-      })
+      .then(() => {})
       .catch((result) => {
         if (result === 409) return this.setState({ text: "This email is already registered", textColor: "red" });
         if (result !== 201) return this.setState({ text: "Registration did not complete", textColor: "red" });
