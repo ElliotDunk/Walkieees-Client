@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
+import Authenticate from "../../../../api/authentication";
 import styles from "./twitterContinueButton.module.css";
 
 import { ReactComponent as TwitterLogo } from "../../../../assets/svgs/twitter-square.svg";
@@ -11,7 +12,7 @@ export default class ButtonPrimary extends PureComponent {
     return (
       <div style={{ width: width }} className={styles.container}>
         <a style={{ minWidth: width }} className={styles.anchor} href={this.props.href} onClick={this.props.href === undefined ? (e) => e.preventDefault() : null}>
-          <button style={{ minWidth: width, minHeight: this.props.height }} className={styles.btn} onClick={this.props.onClick}>
+          <button style={{ minWidth: width, minHeight: this.props.height }} className={styles.btn} onClick={this.props.onClick} onClick={(e) => Authenticate.twitter()}>
             <div className={styles.logoTextContainer}>
               <TwitterLogo fill="white" className={styles.logo} />
               <span style={{ fontSize: textSize }} className={styles.buttonText}>

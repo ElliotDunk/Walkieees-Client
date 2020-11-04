@@ -80,4 +80,12 @@ export default class Authenticate {
   static facebook() {
     window.open(`https://localhost:8443/api/authenticate/facebook`, "_self");
   }
+
+  static twitter() {
+    window.open(`https://localhost:8443/api/authenticate/twitter`, "_self");
+  }
+
+  static google() {
+    window.open(`https://localhost:8443/api/authenticate/google`, "_self");
+  }
 }

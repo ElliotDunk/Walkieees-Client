@@ -7,12 +7,6 @@ import styles from "./facebookContinueButton.module.css";
 import { ReactComponent as FacebookLogo } from "../../../../assets/svgs/facebook-square.svg";
 
 export default class ButtonPrimary extends PureComponent {
-  onClick = () => {
-    Authenticate.facebook().then((result) => {
-      return <Redirect to={result} />;
-    });
-  };
-
   render() {
     const width = this.props.width !== undefined ? this.props.width : "150px";
     const textSize = this.props.textSize !== undefined ? this.props.textSize : "1rem";
