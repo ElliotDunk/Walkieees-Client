@@ -1,6 +1,5 @@
 import axios from "axios";
 import qs from "querystring";
-import jwt from "jsonwebtoken";
 
 const AUTHENTICATE_URL = "https://localhost:8443/api/authenticate";
 
@@ -87,5 +86,42 @@ export default class Authenticate {
 
   static google() {
     window.open(`https://localhost:8443/api/authenticate/google`, "_self");
+  }
+
+  static requestResetPassword(formData) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${AUTHENTICATE_URL}/request/resetpassword`, qs.stringify(formData), {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        })
+        .then((response) => {
+          resolve(response.status);
+        })
+        .catch((error) => {
+          reject(error.response.status);
+        });
+    });
+  }
+
+  static resetPassword(formData) {
+    return new Promise((resolve, reject) => {
+      axios
+        .put(`${AUTHENTICATE_URL}/resetpassword`, qs.stringify(formData), {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        })
+        .then((response) => {
+          window.location.href = "/";
+          resolve(response.status);
+        })
+        .catch((error) => {
+          reject(error.response.status);
+        });
+    });
   }
 }

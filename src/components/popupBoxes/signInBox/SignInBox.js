@@ -85,7 +85,7 @@ export default class SignInBox extends PureComponent {
           </span>
           <div className={styles.forgotPasswordContainer}>
             <span className={styles.forgotPasswordText}>
-              Forgot your password? <span>Reset It</span>
+              Forgot your password? <span onClick={this.props.forgotPasswordClick}>Reset It</span>
             </span>
           </div>
         </div>

@@ -4,6 +4,7 @@ import Index from "./components/pages/index/Index";
 import WalksSearch from "./components/pages/walksSearch/WalksSearch";
 import WalkView from "./components/pages/walkView/WalkView";
 import Registration from "./components/pages/registration/Registration";
+import ResetPassword from "./components/pages/resetPassword/ResetPassword";
 import PrivacyPolicy from "./components/pages/privacyPolicy/PrivacyPolicy";
 import Terms from "./components/pages/terms/Terms";
 import "./App.css";
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route path="/register/:data?">
           <Registration />
+        </Route>
+        <Route path="/resetpassword/:data?">
+          <ResetPassword />
         </Route>
         <Route path="/privacy">
           <PrivacyPolicy />

@@ -27,7 +27,7 @@ export default class Registration extends Component {
       textColor: "grey",
       authData: null,
     };
-    this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.keyPress = this.keyPress.bind(this);
   }
 
   componentDidMount() {
