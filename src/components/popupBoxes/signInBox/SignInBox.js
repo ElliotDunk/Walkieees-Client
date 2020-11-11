@@ -4,7 +4,7 @@ import Authenticate from "../../../api/authentication";
 import TextInput from "../../inputs/textInput/singleLineTextInput/SingleLineTextInput";
 import ButtonPrimary from "../../inputs/buttons/buttonPrimary/ButtonPrimary";
 import FacebookButton from "../../inputs/buttons/facebookContinueButton/FacebookContinueButton";
-import TwitterButton from "../../inputs/buttons/twitterContinueButton copy/TwitterContinueButton";
+import TwitterButton from "../../inputs/buttons/twitterContinueButton/TwitterContinueButton";
 import GoogleButton from "../../inputs/buttons/googleContinueButton/GoogleContinueButton";
 import styles from "./signInBox.module.css";
 
@@ -72,13 +72,13 @@ export default class SignInBox extends PureComponent {
             <hr />
           </div>
           <div className={styles.socialMediaBtnContainer}>
-            <FacebookButton width="262px" height="40px" textSize="0.8rem" />
+            <FacebookButton width="262px" height="40px" textSize="0.8rem" onClick={Authenticate.facebook} />
           </div>
           <div className={styles.socialMediaBtnContainer}>
-            <TwitterButton width="262px" height="40px" textSize="0.8rem" />
+            <TwitterButton width="262px" height="40px" textSize="0.8rem" onClick={Authenticate.twitter} />
           </div>
           <div className={styles.socialMediaBtnContainer}>
-            <GoogleButton width="262px" height="40px" textSize="0.8rem" />
+            <GoogleButton width="262px" height="40px" textSize="0.8rem" onClick={Authenticate.google} />
           </div>
           <span className={styles.signUpText}>
             Dont have an account? <span onClick={this.props.registrationClick}>Sign Up</span>

@@ -1,15 +1,19 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import authenticationCheck from "./utils/authenticationCheck";
 import Index from "./components/pages/index/Index";
 import WalksSearch from "./components/pages/walksSearch/WalksSearch";
 import WalkView from "./components/pages/walkView/WalkView";
 import Registration from "./components/pages/registration/Registration";
+import AccountView from "./components/pages/accountView/AccountView";
 import ResetPassword from "./components/pages/resetPassword/ResetPassword";
 import PrivacyPolicy from "./components/pages/privacyPolicy/PrivacyPolicy";
 import Terms from "./components/pages/terms/Terms";
 import "./App.css";
 
 function App() {
+  const loggedIn = authenticationCheck();
+
   return (
     <BrowserRouter>
       <Switch>
@@ -30,6 +34,9 @@ function App() {
         </Route>
         <Route path="/resetpassword/:data?">
           <ResetPassword />
+        </Route>
+        <Route exact path="/profile/:status?">
+          {loggedIn ? <AccountView /> : <Redirect to="/" />}
         </Route>
         <Route path="/privacy">
           <PrivacyPolicy />

@@ -39,7 +39,7 @@ export default class AccountLink extends Component {
           <DownArrow style={{ display: authenticationCheck() ? "block" : "none" }} className={styles.accountLogo} fill={this.props.color || "#282cdd"} />
         </div>
         <div style={dropDownStyle} className={styles.dropDownBox}>
-          <p style={walksBtnStyle} className={styles.dropDownText} onClick={() => this.searchTypeClicked("Walks")}>
+          <p style={walksBtnStyle} className={styles.dropDownText} onClick={() => (window.location.href = "/profile")}>
             Profile
           </p>
           <div className={styles.lineBreak}></div>

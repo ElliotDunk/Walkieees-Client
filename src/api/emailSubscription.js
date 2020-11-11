@@ -1,27 +1,39 @@
 import axios from "axios";
 
-export default function PostEmailSubscription(email) {
-  const API_URL = "/api/subscribe/email";
+const API_URL = "/api/subscribe/email";
 
-  return new Promise((resolve, reject) => {
-    axios
-      .post(
-        API_URL,
-        {
-          email: email,
-          permissions: {
-            marketingEmails: true,
+export default class {
+  static subscribe(email) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(
+          API_URL,
+          {
+            email: email,
           },
-        },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        alert(`${email} has been subscribed.`);
-        resolve(response);
-      })
-      .catch((error) => {
-        alert(`${email} has NOT been subscribed.`);
-        reject(null);
-      });
-  });
+          { withCredentials: true }
+        )
+        .then((response) => {
+          alert(`${email} has been subscribed.`);
+          resolve(response);
+        })
+        .catch((error) => {
+          alert(`${email} has NOT been subscribed.`);
+          reject(null);
+        });
+    });
+  }
+
+  static Unsubscribe(email) {
+    return new Promise((resolve, reject) => {
+      axios
+        .delete(API_URL, { data: { email: email } })
+        .then((response) => {
+          resolve(response.status);
+        })
+        .catch((error) => {
+          reject(error.response.status);
+        });
+    });
+  }
 }

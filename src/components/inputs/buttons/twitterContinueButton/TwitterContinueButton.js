@@ -12,7 +12,17 @@ export default class ButtonPrimary extends PureComponent {
     return (
       <div style={{ width: width }} className={styles.container}>
         <a style={{ minWidth: width }} className={styles.anchor} href={this.props.href} onClick={this.props.href === undefined ? (e) => e.preventDefault() : null}>
-          <button style={{ minWidth: width, minHeight: this.props.height }} className={styles.btn} onClick={this.props.onClick} onClick={(e) => Authenticate.twitter()}>
+          <button
+            style={{
+              minWidth: width,
+              minHeight: this.props.height,
+              cursor: this.props.unactive ? "default" : "pointer",
+              backgroundColor: !this.props.unactive ? "#00acee" : "#d8d8d8",
+            }}
+            className={styles.btn}
+            onClick={this.props.onClick}
+            onClick={!this.props.unactive ? this.props.onClick : null}
+          >
             <div className={styles.logoTextContainer}>
               <TwitterLogo fill="white" className={styles.logo} />
               <span style={{ fontSize: textSize }} className={styles.buttonText}>
@@ -32,4 +42,5 @@ ButtonPrimary.propTypes = {
   textSize: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,
+  unactive: PropTypes.bool,
 };

@@ -80,6 +80,26 @@ export default class Authenticate {
     window.open(`https://localhost:8443/api/authenticate/facebook`, "_self");
   }
 
+  static linkFacebook() {
+    console.log("Facebook");
+    return new Promise((resolve, reject) => {
+      axios
+        .put(`${AUTHENTICATE_URL}/link/facebook`, {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        })
+        .then((response) => {
+          resolve(response.status);
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(error);
+        });
+    });
+  }
+
   static twitter() {
     window.open(`https://localhost:8443/api/authenticate/twitter`, "_self");
   }

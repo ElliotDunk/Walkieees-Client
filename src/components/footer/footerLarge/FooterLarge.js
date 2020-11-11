@@ -18,7 +18,7 @@ export default class FooterLarge extends Component {
   }
 
   handleSubscriptionClick() {
-    EmailSubscriptionAPI(this.state.subscriptionText);
+    EmailSubscriptionAPI.subscribe(this.state.subscriptionText);
   }
 
   handleSubscriptionChange(event) {
