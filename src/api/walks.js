@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const API_URL = "/api/walks";
+const API_URL = "https://localhost:8443/api/walks";
 
 export default class Walks {
   static fetchWalk(id) {
     return new Promise((resolve, reject) => {
       axios
-        .get(`${API_URL}/${id}`, { withCredentials: true })
+        .get(`${API_URL}/walk/${id}`, { withCredentials: true })
         .then((response) => {
           resolve(response.data);
         })
@@ -32,6 +32,24 @@ export default class Walks {
         })
         .catch((error) => {
           reject(null);
+        });
+    });
+  }
+
+  static fetchUserWalks() {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`${API_URL}/userwalks`, {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        })
+        .then((response) => {
+          resolve(response.data);
+        })
+        .catch((error) => {
+          reject(error);
         });
     });
   }

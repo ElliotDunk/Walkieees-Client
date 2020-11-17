@@ -30,7 +30,7 @@ export default class WalkCardVertical extends Component {
     const resizedImage = this.props.image !== undefined ? ImageUrl({ imageUrls: this.props.image[0], width: "512px" }) : "";
     return (
       <div>
-        <a className={styles.linkContainer} href={`/walks/${this.props.ID}`}>
+        <a className={styles.linkContainer} href={`/walks/view/${this.props.ID}`}>
           <img className={styles.image} src={resizedImage} alt="Dog Walking Location" />
           <div className={styles.bookmarkContainer}>
             <span className={styles.distance} onClick={(e) => e.preventDefault()}>

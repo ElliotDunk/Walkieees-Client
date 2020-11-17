@@ -21,7 +21,7 @@ export default class NavBar extends PureComponent {
   }
 
   componentDidMount() {
-    if (authenticationCheck()) {
+    if (authenticationCheck() !== false) {
       this.setState({ loggedIn: true });
     } else {
       this.setState({ loggedIn: false });
@@ -29,7 +29,7 @@ export default class NavBar extends PureComponent {
   }
 
   componentDidUpdate() {
-    if (authenticationCheck()) {
+    if (authenticationCheck() !== false) {
       this.setState({ loggedIn: true });
     } else {
       this.setState({ loggedIn: false });

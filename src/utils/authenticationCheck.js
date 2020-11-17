@@ -1,6 +1,7 @@
 export default function authenticationCheck() {
-  if (readCookie("SessionVis") === "false" || !readCookie("SessionVis")) return false;
-  return true;
+  const sessionCookie = readCookie("SessionVis");
+  if (sessionCookie === "false" || !sessionCookie) return false;
+  return sessionCookie;
 }
 
 function readCookie(name) {

@@ -25,7 +25,7 @@ export default class AccountLink extends Component {
   };
 
   render() {
-    const text = authenticationCheck() ? "My Account" : "Sign In";
+    const text = authenticationCheck() !== false ? "My Account" : "Sign In";
     const dropDownStyle = this.props.accountBoxOpen ? { display: "block" } : { display: "none" };
     const walksBtnStyle = this.state.searchType === "Walks" ? { color: "gray", cursor: "default" } : { color: "#282cdd" };
     const businessesBtnStyle = this.state.searchType === "Businesses" ? { color: "gray", cursor: "default" } : { color: "#282cdd" };
@@ -35,8 +35,8 @@ export default class AccountLink extends Component {
           {text}
         </span>
         <div className={styles.logoContainer} onClick={() => this.dropDownClick()}>
-          <AccountLogo style={{ display: authenticationCheck() ? "none" : "block" }} fill={this.props.color || "#282cdd"} />
-          <DownArrow style={{ display: authenticationCheck() ? "block" : "none" }} className={styles.accountLogo} fill={this.props.color || "#282cdd"} />
+          <AccountLogo style={{ display: authenticationCheck() !== false ? "none" : "block" }} fill={this.props.color || "#282cdd"} />
+          <DownArrow style={{ display: authenticationCheck() !== false ? "block" : "none" }} className={styles.accountLogo} fill={this.props.color || "#282cdd"} />
         </div>
         <div style={dropDownStyle} className={styles.dropDownBox}>
           <p style={walksBtnStyle} className={styles.dropDownText} onClick={() => (window.location.href = "/profile")}>

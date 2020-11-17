@@ -1,0 +1,17 @@
+.titleContainer {
+  margin: 15px 0;
+}
+
+.walksContainer {
+  width: 100%;
+  min-height: 314px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.noWalksContainer {
+  width: 262px;
+  text-align: center;
+  margin: 0 auto 50px auto;
+}

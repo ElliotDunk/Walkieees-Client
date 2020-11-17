@@ -4,8 +4,10 @@ import authenticationCheck from "./utils/authenticationCheck";
 import Index from "./components/pages/index/Index";
 import WalksSearch from "./components/pages/walksSearch/WalksSearch";
 import WalkView from "./components/pages/walkView/WalkView";
+import WalkCreate from "./components/pages/walkCreate/WalkCreate";
 import Registration from "./components/pages/registration/Registration";
 import AccountView from "./components/pages/accountView/AccountView";
+import Contact from "./components/pages/contact/Contact";
 import ResetPassword from "./components/pages/resetPassword/ResetPassword";
 import PrivacyPolicy from "./components/pages/privacyPolicy/PrivacyPolicy";
 import Terms from "./components/pages/terms/Terms";
@@ -26,8 +28,11 @@ function App() {
         <Route path="/walks/search">
           <WalksSearch />
         </Route>
-        <Route path="/walks/:id">
+        <Route path="/walks/view/:id">
           <WalkView />
+        </Route>
+        <Route exact path="/walks/create">
+          {loggedIn ? <WalkCreate /> : <Redirect to="/" />}
         </Route>
         <Route path="/register/:data?">
           <Registration />
@@ -37,6 +42,9 @@ function App() {
         </Route>
         <Route exact path="/profile/:status?">
           {loggedIn ? <AccountView /> : <Redirect to="/" />}
+        </Route>
+        <Route path="/contact">
+          <Contact />
         </Route>
         <Route path="/privacy">
           <PrivacyPolicy />

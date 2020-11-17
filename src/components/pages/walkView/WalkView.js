@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import WalksAPI from "../../../api/walks";
+import authenticationCheck from "../../../utils/authenticationCheck";
 import mapboxgl from "mapbox-gl";
 import moment from "moment";
 import NavBar from "../../navBar/NavBar";
@@ -29,7 +30,7 @@ export default class WalksView extends Component {
   }
 
   async componentDidMount() {
-    const id = window.location.pathname.replace("/walks/", "");
+    const id = window.location.pathname.replace("/walks/view/", "");
     const walk = await WalksAPI.fetchWalk(id);
     this.setState({ walk });
 
@@ -52,10 +53,18 @@ export default class WalksView extends Component {
   render() {
     const latitude = this.state.walk ? this.state.walk.location.coordinates[0] : 0;
     const longitude = this.state.walk ? this.state.walk.location.coordinates[1] : 0;
-    const relativeDate = moment(this.state.walk ? this.state.walk.dateCreated : Date.now()).toNow();
+    const relativeDate = moment(this.state.walk ? this.state.walk.dateCreated : Date.now()).fromNow();
     return (
       <React.Fragment>
         <NavBar />
+        <div style={{ display: this.state.walk !== null && authenticationCheck() === this.state.walk.userID ? "flex" : "none" }} className={styles.editWalkContainer}>
+          <div className={styles.btnContainer}>
+            <ButtonPrimary text="Edit" />
+          </div>
+          <div className={styles.btnContainer}>
+            <ButtonPrimary text="Delete" color="red" />
+          </div>
+        </div>
         <div className={styles.upperContainer}>
           <div className={styles.imgContainer}>
             <ImageGallery images={[this.state.walk !== null ? this.state.walk.imageUrl : ""]} />
