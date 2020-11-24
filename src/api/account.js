@@ -1,12 +1,13 @@
 import axios from "axios";
 
-const ACCOUNT_URL = "https://localhost:8443/api/account";
+const ACCOUNT_URL_DEV = "https://localhost:8443/api/account";
+const ACCOUNT_URL = "/api/account";
 
 export default class {
   static retrieve() {
     return new Promise((resolve, reject) => {
       axios
-        .get(`${ACCOUNT_URL}/retrieve`, {
+        .get(`${ACCOUNT_URL_DEV}/retrieve`, {
           withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -24,7 +25,7 @@ export default class {
   static delete() {
     return new Promise((resolve, reject) => {
       axios
-        .delete(`${ACCOUNT_URL}/delete`, {
+        .delete(`${ACCOUNT_URL_DEV}/delete`, {
           withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",

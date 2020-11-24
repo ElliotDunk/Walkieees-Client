@@ -32,7 +32,8 @@ function App() {
           <WalkView />
         </Route>
         <Route exact path="/walks/create">
-          {loggedIn ? <WalkCreate /> : <Redirect to="/" />}
+          {/* {loggedIn ? <WalkCreate /> : <Redirect to="/" />} */}
+          <WalkCreate />
         </Route>
         <Route path="/register/:data?">
           <Registration />
@@ -41,7 +42,8 @@ function App() {
           <ResetPassword />
         </Route>
         <Route exact path="/profile/:status?">
-          {loggedIn ? <AccountView /> : <Redirect to="/" />}
+          {/* {loggedIn ? <AccountView /> : <Redirect to="/" />} */}
+          <AccountView />
         </Route>
         <Route path="/contact">
           <Contact />

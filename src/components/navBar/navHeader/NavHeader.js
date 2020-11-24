@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import Logo from "../../logo/Logo";
-import AccountBtn from "../../inputs/buttons/accountBtn/AccountBtn";
+import AccountBtn from "../../inputs/buttons/accountButton/AccountButton";
 import styles from "./navHeader.module.css";
 
 export default class NavHeader extends PureComponent {

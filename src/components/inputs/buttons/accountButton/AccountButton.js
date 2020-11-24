@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Authenticate from "../../../../api/authentication";
 import { ReactComponent as AccountLogo } from "../../../../assets/svgs/account-logo.svg";
 import { ReactComponent as DownArrow } from "../../../../assets/svgs/chevron.svg";
-import styles from "./accountBtn.module.css";
+import styles from "./accountButton.module.css";
 import authenticationCheck from "../../../../utils/authenticationCheck";
 
 export default class AccountLink extends Component {

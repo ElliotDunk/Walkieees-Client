@@ -52,7 +52,7 @@ export default class Index extends Component {
         <div className={styles.frameContainer}>
           <WalksSearchFrame walksArr={this.state.walksData} endIndex={this.state.walksSize} />
           <div className={styles.popularWalksButtonContainer}>
-            <PrimaryButton text="View More" onClick="/" />
+            <PrimaryButton text="Create A Walk" onClick="/walks/create" />
           </div>
         </div>
         <ContentTitle text="Meet Local Dog Businesses" />

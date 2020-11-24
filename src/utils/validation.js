@@ -4,7 +4,8 @@ const NAME = /^[a-zA-Zàáâäãåąčćęèéêëėįìíîïłńòóôöõøù
 
 export default class Validate {
   static email(email) {
-    if (email.length <= 0) return { error: true, message: "Email cannot be blank." };
+    if (email.length <= 0)
+      return { error: true, message: "Email cannot be blank." };
     if (EMAIL_REGEX.test(email)) {
       return { error: false };
     } else {
@@ -13,30 +14,50 @@ export default class Validate {
   }
 
   static password(password) {
-    if (password.length < 8) return { error: true, message: "Passwords must be atleast 8 charecters." };
-    if (!LETTERS_NUMBERS.test(password)) return { error: true, message: "Passwords must be letters and numbers." };
+    if (password.length < 8)
+      return {
+        error: true,
+        message: "Passwords must be atleast 8 charecters.",
+      };
+    if (!LETTERS_NUMBERS.test(password))
+      return { error: true, message: "Passwords must be letters and numbers." };
     return { error: false };
   }
 
   static confirmPassword(password, confirmPassword) {
-    if (password !== confirmPassword) return { error: true, message: "Passwords don't match." };
+    if (password !== confirmPassword)
+      return { error: true, message: "Passwords don't match." };
     return { error: false };
   }
 
   static name(name) {
-    if (!NAME.test(name)) return { error: true, message: "Please enter a valid name." };
+    if (!NAME.test(name))
+      return { error: true, message: "Please enter a valid name." };
     return { error: false };
   }
 
   static DOB(DOB) {
-    if (DOB.length <= 0) return { error: true, message: "Date of birth can't be blank." };
+    if (DOB.length <= 0)
+      return { error: true, message: "Date of birth can't be blank." };
     const minAgeDate = Date.now() - 504910816000; //16 Years Ago From Today
-    if (minAgeDate < Date.parse(DOB)) return { error: true, message: "Minimum age is 16 years." };
+    if (minAgeDate < Date.parse(DOB))
+      return { error: true, message: "Minimum age is 16 years." };
     return { error: false };
   }
 
   static terms(terms) {
     if (!terms) return { error: true, message: "You must agree to the terms." };
+    return { error: false };
+  }
+
+  static walkDescription(description) {
+    if (typeof description !== "string")
+      return { error: true, message: "Please enter a valid description." };
+    if (description.length < 500)
+      return {
+        error: true,
+        message: "Description must be atleast 500 charecters",
+      };
     return { error: false };
   }
 }

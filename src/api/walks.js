@@ -1,12 +1,13 @@
 import axios from "axios";
 
-const API_URL = "https://localhost:8443/api/walks";
+const API_URL_DEV = "https://localhost:8443/api/walks";
+const API_URL = "/api/walks";
 
 export default class Walks {
   static fetchWalk(id) {
     return new Promise((resolve, reject) => {
       axios
-        .get(`${API_URL}/walk/${id}`, { withCredentials: true })
+        .get(`${API_URL_DEV}/walk/${id}`, { withCredentials: true })
         .then((response) => {
           resolve(response.data);
         })
@@ -16,17 +17,31 @@ export default class Walks {
     });
   }
 
-  static fetchManyWalks({ location, latitude, longitude, minDistance, maxDistance, limit }) {
-    const locationQuery = typeof location === "undefined" ? "" : "&location=" + location;
+  static fetchManyWalks({
+    location,
+    latitude,
+    longitude,
+    minDistance,
+    maxDistance,
+    limit,
+  }) {
+    const locationQuery =
+      typeof location === "undefined" ? "" : "&location=" + location;
     const latQuery = typeof latitude === "undefined" ? "" : "&lat=" + latitude;
-    const lngQuery = typeof longitude === "undefined" ? "" : "&lng=" + longitude;
-    const minDistQuery = typeof minDistance === "undefined" ? "" : "&minDist=" + minDistance;
-    const maxDistQuery = typeof maxDistance === "undefined" ? "" : "&maxDist=" + maxDistance;
+    const lngQuery =
+      typeof longitude === "undefined" ? "" : "&lng=" + longitude;
+    const minDistQuery =
+      typeof minDistance === "undefined" ? "" : "&minDist=" + minDistance;
+    const maxDistQuery =
+      typeof maxDistance === "undefined" ? "" : "&maxDist=" + maxDistance;
     const limitQuery = typeof limit === "undefined" ? "" : "&limit=" + limit;
 
     return new Promise((resolve, reject) => {
       axios
-        .get(`${API_URL}/search?${locationQuery}${latQuery}${lngQuery}${minDistQuery}${maxDistQuery}${limitQuery}`, { withCredentials: true })
+        .get(
+          `${API_URL_DEV}/search?${locationQuery}${latQuery}${lngQuery}${minDistQuery}${maxDistQuery}${limitQuery}`,
+          { withCredentials: true }
+        )
         .then((response) => {
           resolve(response.data);
         })
@@ -39,7 +54,7 @@ export default class Walks {
   static fetchUserWalks() {
     return new Promise((resolve, reject) => {
       axios
-        .get(`${API_URL}/userwalks`, {
+        .get(`${API_URL_DEV}/userwalks`, {
           withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",

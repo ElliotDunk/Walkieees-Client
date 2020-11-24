@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import styles from "./arrowBtn.module.css";
+import styles from "./arrowButton.module.css";
 
 import { ReactComponent as Arrow } from "../../../../assets/svgs/arrow.svg";
 

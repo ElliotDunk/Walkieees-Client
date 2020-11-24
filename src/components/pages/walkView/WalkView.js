@@ -18,7 +18,8 @@ import { ReactComponent as HeartUnfileld } from "../../../assets/svgs/heartUnfil
 import { ReactComponent as Share } from "../../../assets/svgs/share.svg";
 import { ReactComponent as MapMarker } from "../../../assets/svgs/mapMarker.svg";
 
-mapboxgl.accessToken = "pk.eyJ1IjoiZWxsaW90ZHVuayIsImEiOiJja2JucjVwM2IxdmN0MzVxdnBjcW4xZzZ3In0.jpsxwlAVCnNCkV6Dp6IfUg";
+mapboxgl.accessToken =
+  "pk.eyJ1IjoiZWxsaW90ZHVuayIsImEiOiJja2JucjVwM2IxdmN0MzVxdnBjcW4xZzZ3In0.jpsxwlAVCnNCkV6Dp6IfUg";
 
 export default class WalksView extends Component {
   constructor() {
@@ -34,11 +35,22 @@ export default class WalksView extends Component {
     const walk = await WalksAPI.fetchWalk(id);
     this.setState({ walk });
 
-    const nearbyWalks = await WalksAPI.fetchManyWalks({ latitude: walk.location.coordinates[0], longitude: walk.location.coordinates[1], maxDistance: 5000000, limit: 5 });
+    const nearbyWalks = await WalksAPI.fetchManyWalks({
+      latitude: walk.location.coordinates[0],
+      longitude: walk.location.coordinates[1],
+      maxDistance: 5000000,
+      limit: 5,
+    });
     this.setState({ nearbyWalks });
 
-    const longitude = this.state.walk !== undefined ? this.state.walk.location.coordinates[0] : "50.8225";
-    const latitude = this.state.walk !== undefined ? this.state.walk.location.coordinates[1] : "0.1372";
+    const longitude =
+      this.state.walk !== undefined
+        ? this.state.walk.location.coordinates[0]
+        : "50.8225";
+    const latitude =
+      this.state.walk !== undefined
+        ? this.state.walk.location.coordinates[1]
+        : "0.1372";
 
     const map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -46,18 +58,35 @@ export default class WalksView extends Component {
       center: [longitude, latitude],
       zoom: 12,
     });
-    // eslint-disable-next-line
-    const marker = new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
+    map.addControl(new mapboxgl.NavigationControl());
+    new mapboxgl.Marker({ color: "#282cdd" })
+      .setLngLat([longitude, latitude])
+      .addTo(map);
   }
 
   render() {
-    const latitude = this.state.walk ? this.state.walk.location.coordinates[0] : 0;
-    const longitude = this.state.walk ? this.state.walk.location.coordinates[1] : 0;
-    const relativeDate = moment(this.state.walk ? this.state.walk.dateCreated : Date.now()).fromNow();
+    const latitude = this.state.walk
+      ? this.state.walk.location.coordinates[0]
+      : 0;
+    const longitude = this.state.walk
+      ? this.state.walk.location.coordinates[1]
+      : 0;
+    const relativeDate = moment(
+      this.state.walk ? this.state.walk.dateCreated : Date.now()
+    ).fromNow();
     return (
       <React.Fragment>
         <NavBar />
-        <div style={{ display: this.state.walk !== null && authenticationCheck() === this.state.walk.userID ? "flex" : "none" }} className={styles.editWalkContainer}>
+        <div
+          style={{
+            display:
+              this.state.walk !== null &&
+              authenticationCheck() === this.state.walk.userID
+                ? "flex"
+                : "none",
+          }}
+          className={styles.editWalkContainer}
+        >
           <div className={styles.btnContainer}>
             <ButtonPrimary text="Edit" />
           </div>
@@ -67,14 +96,23 @@ export default class WalksView extends Component {
         </div>
         <div className={styles.upperContainer}>
           <div className={styles.imgContainer}>
-            <ImageGallery images={[this.state.walk !== null ? this.state.walk.imageUrl : ""]} />
+            <ImageGallery
+              images={this.state.walk !== null ? this.state.walk.imageUrl : []}
+            />
           </div>
           <div className={styles.rightContainer}>
             <div className={styles.titleBox}>
               <h1>{this.state.walk !== null ? this.state.walk.title : ""}</h1>
-              <p>{this.state.walk !== null ? this.state.walk.description : ""}</p>
+              <p>
+                {this.state.walk !== null ? this.state.walk.description : ""}
+              </p>
               <div className={styles.upperReviewStarsContainer}>
-                <ReviewStars rating={3} filledColor="#ffffff" unfilledColor="#ffffff" starWidthHeight="25px" />
+                <ReviewStars
+                  rating={3}
+                  filledColor="#ffffff"
+                  unfilledColor="#ffffff"
+                  starWidthHeight="25px"
+                />
               </div>
             </div>
             <div className={styles.btnsBox}>
@@ -83,7 +121,9 @@ export default class WalksView extends Component {
                   <span>ED</span>
                 </div>
                 <p>
-                  Submitted By <span className={styles.authorText}>Elliot Dunk</span> {relativeDate}
+                  Submitted By{" "}
+                  <span className={styles.authorText}>Elliot Dunk</span>{" "}
+                  {relativeDate}
                 </p>
               </div>
               <div className={styles.upperBtnsContainer}>
@@ -107,7 +147,11 @@ export default class WalksView extends Component {
             </div>
           </div>
           <div className={styles.imgContainerMobile}>
-            <ImageGallery images={[this.state.walk !== null ? this.state.walk.imageUrl : ""]} />
+            <ImageGallery
+              images={[
+                this.state.walk !== null ? this.state.walk.imageUrl : "",
+              ]}
+            />
           </div>
         </div>
         <div className={styles.reviewsContentContainer}>
@@ -115,7 +159,13 @@ export default class WalksView extends Component {
             <p>
               <strong>About This Walk</strong>
             </p>
-            <p>A fabulous walk from Pitton, E of Salisbury, to the ruins of medieval Clarendon Palace. The first part is on the long distance Clarendon Way path that runs from Winchester to Salisbury, and returns via an alternative route around and through arable fields and woodland.</p>
+            <p>
+              A fabulous walk from Pitton, E of Salisbury, to the ruins of
+              medieval Clarendon Palace. The first part is on the long distance
+              Clarendon Way path that runs from Winchester to Salisbury, and
+              returns via an alternative route around and through arable fields
+              and woodland.
+            </p>
             <p>
               <strong>Whats Here</strong>
             </p>
@@ -134,11 +184,21 @@ export default class WalksView extends Component {
             <ReviewsFrame />
           </div>
         </div>
-        <div ref={(el) => (this.mapContainer = el)} className={styles.mapContainer} />
+        <div
+          ref={(el) => (this.mapContainer = el)}
+          className={styles.mapContainer}
+        />
         <div className={styles.nearbyWalksContainer}>
           <ContentTitle text="Nearby Walks" />
           <div className={styles.walksFrameContainer}>
-            <ManyWalkFrame searchCoordinates={{ latitude, longitude }} walksArr={this.state.nearbyWalks !== null ? this.state.nearbyWalks.walks.slice(1, 5) : null} />
+            <ManyWalkFrame
+              searchCoordinates={{ latitude, longitude }}
+              walksArr={
+                this.state.nearbyWalks !== null
+                  ? this.state.nearbyWalks.walks.slice(1, 5)
+                  : null
+              }
+            />
           </div>
           <div className={styles.nearbyWalksBtnContainer}>
             <ButtonPrimary text="View More" />

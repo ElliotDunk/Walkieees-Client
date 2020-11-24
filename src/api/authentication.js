@@ -1,13 +1,14 @@
 import axios from "axios";
 import qs from "querystring";
 
-const AUTHENTICATE_URL = "https://localhost:8443/api/authenticate";
+const AUTHENTICATE_URL_DEV = "https://localhost:8443/api/authenticate";
+const AUTHENTICATE_URL = "/api/authenticate";
 
 export default class Authenticate {
   static login(formData) {
     return new Promise((resolve, reject) => {
       axios
-        .post(`${AUTHENTICATE_URL}/login`, qs.stringify(formData), {
+        .post(`${AUTHENTICATE_URL_DEV}/login`, qs.stringify(formData), {
           withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -27,7 +28,7 @@ export default class Authenticate {
   static logout() {
     return new Promise((resolve, reject) => {
       axios
-        .delete(`${AUTHENTICATE_URL}/logout`, { withCredentials: true })
+        .delete(`${AUTHENTICATE_URL_DEV}/logout`, { withCredentials: true })
         .then((response) => {
           window.location.reload();
           resolve(response.status);
@@ -41,7 +42,7 @@ export default class Authenticate {
   static register(formData) {
     return new Promise((resolve, reject) => {
       axios
-        .post(`${AUTHENTICATE_URL}/register`, qs.stringify(formData), {
+        .post(`${AUTHENTICATE_URL_DEV}/register`, qs.stringify(formData), {
           withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -60,7 +61,7 @@ export default class Authenticate {
   static registerAuth(formData) {
     return new Promise((resolve, reject) => {
       axios
-        .post(`${AUTHENTICATE_URL}/register`, qs.stringify(formData), {
+        .post(`${AUTHENTICATE_URL_DEV}/register`, qs.stringify(formData), {
           withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -84,7 +85,7 @@ export default class Authenticate {
     console.log("Facebook");
     return new Promise((resolve, reject) => {
       axios
-        .put(`${AUTHENTICATE_URL}/link/facebook`, {
+        .put(`${AUTHENTICATE_URL_DEV}/link/facebook`, {
           withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -111,12 +112,16 @@ export default class Authenticate {
   static requestResetPassword(formData) {
     return new Promise((resolve, reject) => {
       axios
-        .post(`${AUTHENTICATE_URL}/request/resetpassword`, qs.stringify(formData), {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        })
+        .post(
+          `${AUTHENTICATE_URL_DEV}/request/resetpassword`,
+          qs.stringify(formData),
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        )
         .then((response) => {
           resolve(response.status);
         })
@@ -129,7 +134,7 @@ export default class Authenticate {
   static resetPassword(formData) {
     return new Promise((resolve, reject) => {
       axios
-        .put(`${AUTHENTICATE_URL}/resetpassword`, qs.stringify(formData), {
+        .put(`${AUTHENTICATE_URL_DEV}/resetpassword`, qs.stringify(formData), {
           withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",

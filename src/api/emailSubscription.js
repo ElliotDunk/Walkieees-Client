@@ -1,5 +1,6 @@
 import axios from "axios";
 
+const API_URL_DEV = "/api/subscribe/email";
 const API_URL = "/api/subscribe/email";
 
 export default class {
@@ -7,7 +8,7 @@ export default class {
     return new Promise((resolve, reject) => {
       axios
         .post(
-          API_URL,
+          API_URL_DEV,
           {
             email: email,
           },
@@ -27,7 +28,7 @@ export default class {
   static Unsubscribe(email) {
     return new Promise((resolve, reject) => {
       axios
-        .delete(API_URL, { data: { email: email } })
+        .delete(API_URL_DEV, { data: { email: email } })
         .then((response) => {
           resolve(response.status);
         })
