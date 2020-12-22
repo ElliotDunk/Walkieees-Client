@@ -64,6 +64,19 @@ export default class WalksView extends Component {
       .addTo(map);
   }
 
+  parseHTMLMiniDescription(description) {
+    return description
+    .substring(description.lastIndexOf("<p>") + 3, description.lastIndexOf("</p>"))
+    .replace(/<h1.*?<\/h1>/g, '')
+    .replace(/<h2.*?<\/h2>/g, '')
+    .replace(/<h3.*?<\/h3>/g, '')
+    .replace(/<h4.*?<\/h4>/g, '')
+    .replace(/<h5.*?<\/h5>/g, '')
+    .replace(/(<([^>]+)>)/gi, "")
+    .substring(0, 100)
+    + "...";
+  }
+
   render() {
     const latitude = this.state.walk
       ? this.state.walk.location.coordinates[0]
@@ -104,7 +117,7 @@ export default class WalksView extends Component {
             <div className={styles.titleBox}>
               <h1>{this.state.walk !== null ? this.state.walk.title : ""}</h1>
               <p>
-                {this.state.walk !== null ? this.state.walk.description : ""}
+                {this.state.walk !== null ? this.parseHTMLMiniDescription(this.state.walk.description) : ""}
               </p>
               <div className={styles.upperReviewStarsContainer}>
                 <ReviewStars
@@ -156,28 +169,7 @@ export default class WalksView extends Component {
         </div>
         <div className={styles.reviewsContentContainer}>
           <div className={styles.contentContainer}>
-            <p>
-              <strong>About This Walk</strong>
-            </p>
-            <p>
-              A fabulous walk from Pitton, E of Salisbury, to the ruins of
-              medieval Clarendon Palace. The first part is on the long distance
-              Clarendon Way path that runs from Winchester to Salisbury, and
-              returns via an alternative route around and through arable fields
-              and woodland.
-            </p>
-            <p>
-              <strong>Whats Here</strong>
-            </p>
-            <p>Free Parking, Off Lead Areas, On Lead Areas, Animals On Route</p>
-            <p>
-              <strong>Type Of Walk</strong>
-            </p>
-            <p>Free Parking, Off Lead Areas, On Lead Areas, Animals On Route</p>
-            <p>
-              <strong>More Info</strong>
-            </p>
-            <p>The author provided the following links to more information</p>
+            {this.state.walk !== null ? <div dangerouslySetInnerHTML={{__html: this.state.walk.description}}></div> : ""}
           </div>
           <div className={styles.reviewsFrameContainer}>
             <ContentTitle text="Reviews" />

@@ -13,12 +13,20 @@ export default class FooterLarge extends Component {
     super(props);
     this.state = {
       subscriptionText: "",
+      apiCallInProgress: false
     };
     this.handleSubscriptionClick = this.handleSubscriptionClick.bind(this);
   }
 
   handleSubscriptionClick() {
-    EmailSubscriptionAPI.subscribe(this.state.subscriptionText);
+    try {
+      this.setState({apiCallInProgress: true});
+      EmailSubscriptionAPI.subscribe(this.state.subscriptionText);
+    } catch {
+      window.alert("An Error Occured");
+    } finally {
+      this.setState({apiCallInProgress: false});
+    }
   }
 
   handleSubscriptionChange(event) {
@@ -86,7 +94,7 @@ export default class FooterLarge extends Component {
             <form action="/" method="POST">
               <EmailSubscription onChange={(event) => this.handleSubscriptionChange(event)} />
               <div className={styles.spacer}></div>
-              <ButtonPrimary text="Subscribe" color="#ffffff" width="250px" textColor="#282cdd" onClick={this.handleSubscriptionClick} />
+              <ButtonPrimary text="Subscribe" color="#ffffff" width="250px" textColor="#282cdd" onClick={this.handleSubscriptionClick} loading={this.state.apiCallInProgress} />
             </form>
           </div>
         </div>

@@ -14,6 +14,7 @@ export default class SignInBox extends Component {
       },
       text: "Don't worry it's easy to change!",
       textColor: "grey",
+      apiCallInProgress: false,
     };
     this.keyPress = this.keyPress.bind(this);
   }
@@ -31,15 +32,18 @@ export default class SignInBox extends Component {
     const emailValidation = Validate.email(this.state.inputs.email);
 
     if (emailValidation.error === true) return this.setState({ text: emailValidation.message, textColor: "red" });
+
     //Post registration if between 200 and 300
+    this.setState({apiCallInProgress: true});
     await Authenticate.requestResetPassword(this.state.inputs)
       .then((result) => {
         if (result === 200) return this.setState({ text: "An email has been sent to reset your password, please check your junk mailbox if you dont recieve it.", textColor: "green" });
       })
       .catch((result) => {
-        console.log(result);
         if (result === 404) return this.setState({ text: "An account with this email doesn't exist", textColor: "red" });
         if (result !== 200) return this.setState({ text: "Registration did not complete", textColor: "red" });
+      }).finally(() => {
+        this.setState({apiCallInProgress: false});
       });
   };
 
@@ -62,7 +66,7 @@ export default class SignInBox extends Component {
             <TextInput placeholder="Email" type="email" name="email" onChange={this.handleInputChange} onKeyDown={this.keyPress} />
           </div>
           <div className={styles.continueBtnContainer}>
-            <ButtonPrimary text="Continue" width="262px" height="40px" textSize="0.8rem" type="submit" onClick={this.handleButtonClick} />
+            <ButtonPrimary text="Continue" width="262px" height="40px" textSize="0.8rem" type="submit" onClick={this.handleButtonClick} loading={this.state.apiCallInProgress} />
           </div>
         </div>
       </div>

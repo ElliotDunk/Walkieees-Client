@@ -4,7 +4,7 @@ import Header from "./navHeader/NavHeader";
 import MainNavContainer from "./mainNavContainer/MainNavContainer";
 import SignInBox from "../popupBoxes/signInBox/SignInBox";
 import RegistrationBox from "../popupBoxes/registrationBox/RegistrationBox";
-import ForgotPasswordBox from "../popupBoxes/forgotPasswordBox/ResetPasswordBox";
+import ResetPasswordBox from "../popupBoxes/resetPasswordBox/ResetPasswordBox";
 import styles from "./navBar.module.css";
 import authenticationCheck from "../../utils/authenticationCheck";
 
@@ -116,7 +116,7 @@ export default class NavBar extends PureComponent {
           <RegistrationBox onBackgroundClick={this.registrationClose} />
         </div>
         <div style={{ display: this.state.forgotPasswordOpen ? "block" : "none" }}>
-          <ForgotPasswordBox onBackgroundClick={this.forgotPasswordClose} />
+          <ResetPasswordBox onBackgroundClick={this.forgotPasswordClose} />
         </div>
         <div className={styles.topSpacer}></div>
         <div style={{ transform: `translateY(${containerTranslation})` }} className={styles.container}>

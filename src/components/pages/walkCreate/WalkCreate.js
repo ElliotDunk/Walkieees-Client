@@ -10,6 +10,7 @@ import AddImageButton from "../../inputs/buttons/addImageButton/AddImageButton";
 import styles from "./walkCreate.module.css";
 import mapping from "../../../api/mapping";
 import Validate from "../../../utils/validation";
+import Walks from "../../../api/walks";
 
 export default class MyWalksFrame extends Component {
   constructor(props) {
@@ -19,9 +20,11 @@ export default class MyWalksFrame extends Component {
       description: "",
       markerCoordinates: [],
       imageArr: [],
+      blobArr: [],
       errorMessage: "",
       errorColor: "green",
       locationInput: "",
+      locationTitle: "",
       searchLocations: [],
     };
     this.handlefileChange = this.handlefileChange.bind(this);
@@ -89,10 +92,12 @@ export default class MyWalksFrame extends Component {
 
   handlefileChange(event) {
     const imageArr = this.state.imageArr;
+    const blobArr = this.state.blobArr;
     if (event.target.files[0]) {
       imageArr.push(URL.createObjectURL(event.target.files[0]));
+      blobArr.push(event.target.files[0]);
     }
-    this.setState({ imageArr: imageArr });
+    this.setState({ imageArr, blobArr });
   }
 
   async handleFindClick() {
@@ -104,14 +109,17 @@ export default class MyWalksFrame extends Component {
   }
 
   handleLocationItemClick(location) {
-    this.setState({ markerCoordinates: location.geometry.coordinates });
+    this.setState({
+      markerCoordinates: location.geometry.coordinates,
+      locationTitle: location.place_name,
+    });
   }
 
   handleEditorChange(e) {
     this.setState({ description: e });
   }
 
-  handleSubmit() {
+  async handleSubmit() {
     function scroll() {
       window.scroll({
         top: 0,
@@ -134,18 +142,30 @@ export default class MyWalksFrame extends Component {
         errorColor: "red",
       });
       scroll();
-    } else if (descValidation.error === true) {
-      this.setState({
-        errorMessage: descValidation.message,
-        errorColor: "red",
-      });
-      scroll();
+      } else if (descValidation.error === true) {
+        this.setState({
+          errorMessage: descValidation.message,
+          errorColor: "red",
+        });
+        scroll();
     } else if (this.state.markerCoordinates.length <= 0) {
       this.setState({
         errorMessage: "Please search for a location.",
         errorColor: "red",
       });
       scroll();
+    } else {
+      const data = new FormData();
+      for (let i = 0; i < this.state.blobArr.length; i++) {
+        data.append("images[]", this.state.blobArr[i]);
+      }
+      data.append("title", this.state.title);
+      data.append("description", this.state.description);
+      data.append("longitude", this.state.markerCoordinates[0]);
+      data.append("latitude", this.state.markerCoordinates[1]);
+      data.append("locationTitle", this.state.locationTitle);
+
+      await Walks.create(data);
     }
   }
 
@@ -253,6 +273,7 @@ export default class MyWalksFrame extends Component {
           </p>
           <div className={styles.multiLineInputContainer}>
             <Editor
+            initialValue="<h1>About This Walk</h1><p><em>Describe your walk walk in as much detail as possible such as location, type of terrain, activities, nearby amenities, etc. The above tool bar can be used to add headings, and style your description.</em></p>"
               init={{
                 selector: "textarea#format-custom",
                 height: "100%",

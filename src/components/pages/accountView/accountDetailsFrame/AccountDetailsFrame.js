@@ -48,7 +48,6 @@ export default class AccountView extends Component {
 
   async changeEmailPreferences() {
     if (this.state.accountData !== {} && this.state.accountData.marketingEmails === "On") {
-      console.log(this.state.accountData.email);
       await emailSubscription.Unsubscribe(this.state.accountData.email);
       window.location.reload();
     } else if (this.state.accountData !== {} && this.state.accountData.marketingEmails === "Off") {

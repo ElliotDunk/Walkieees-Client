@@ -22,6 +22,7 @@ function App() {
         <Route exact path="/">
           <Index />
         </Route>
+        //For Facebook Redirect
         <Route exact path="/#_=_">
           <Index />
         </Route>
@@ -32,8 +33,7 @@ function App() {
           <WalkView />
         </Route>
         <Route exact path="/walks/create">
-          {/* {loggedIn ? <WalkCreate /> : <Redirect to="/" />} */}
-          <WalkCreate />
+          {loggedIn ? <WalkCreate /> : <Redirect to="/" />}
         </Route>
         <Route path="/register/:data?">
           <Registration />
@@ -42,8 +42,7 @@ function App() {
           <ResetPassword />
         </Route>
         <Route exact path="/profile/:status?">
-          {/* {loggedIn ? <AccountView /> : <Redirect to="/" />} */}
-          <AccountView />
+          {loggedIn ? <AccountView /> : <Redirect to="/" />}
         </Route>
         <Route path="/contact">
           <Contact />

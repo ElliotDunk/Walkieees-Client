@@ -23,6 +23,17 @@ export default class WalkCardVertical extends Component {
     this.setState({ bookmarkFilled: !bookmarkFilled });
   };
 
+  parseHTMLDescription(description) {
+    return description
+    .substring(description.lastIndexOf("<p>") + 3, description.lastIndexOf("</p>"))
+    .replace(/<h1.*?<\/h1>/g, '')
+    .replace(/<h2.*?<\/h2>/g, '')
+    .replace(/<h3.*?<\/h3>/g, '')
+    .replace(/<h4.*?<\/h4>/g, '')
+    .replace(/<h5.*?<\/h5>/g, '')
+    .replace(/(<([^>]+)>)/gi, "");
+  }
+
   render() {
     if (this.props.searchCoordinates) {
       var distance = haversineFormula(this.props.latitude, this.props.longitude, this.props.searchCoordinates.latitude, this.props.searchCoordinates.longitude).toFixed();
@@ -41,14 +52,14 @@ export default class WalkCardVertical extends Component {
           </div>
           <div className={styles.bookmarkContainer}>
             <h1 className={styles.title}>{this.props.title}</h1>
-            <Bookmark onClick={this.onBookmarkClick} style={{ display: this.state.bookmarkFilled | distance ? "none" : "block" }} className={styles.bookmark} fill="#282cdd" />
+            <Bookmark onClick={this.onBookmarkClick} style={{ display: this.state.bookmarkFilled | distance !== undefined ? "none" : "block" }} className={styles.bookmark} fill="#282cdd" />
             <BookmarkFilled onClick={this.onBookmarkClick} style={{ display: this.state.bookmarkFilled && !distance ? "block" : "none" }} className={styles.bookmark} fill="#282cdd" />
           </div>
           <h4 className={styles.location}>{this.props.location}</h4>
           <div className={styles.ratingContainer}>
             <ReviewStars rating={this.props.rating} />
           </div>
-          <p className={styles.description}>{this.props.description}</p>
+          <p className={styles.description}>{this.parseHTMLDescription(this.props.description)}</p>
         </a>
       </div>
     );

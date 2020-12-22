@@ -3,11 +3,11 @@ import axios from "axios";
 const API_URL_DEV = "https://localhost:8443/api/walks";
 const API_URL = "/api/walks";
 
-export default class Walks {
+export default class {
   static fetchWalk(id) {
     return new Promise((resolve, reject) => {
       axios
-        .get(`${API_URL_DEV}/walk/${id}`, { withCredentials: true })
+        .get(`${API_URL_DEV}/walkview/${id}`, { withCredentials: true })
         .then((response) => {
           resolve(response.data);
         })
@@ -62,6 +62,19 @@ export default class Walks {
         })
         .then((response) => {
           resolve(response.data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
+
+  static create(data) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${API_URL}/create`, data)
+        .then((response) => {
+          resolve(response.status);
         })
         .catch((error) => {
           reject(error);

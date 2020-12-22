@@ -18,6 +18,7 @@ export default class SignInBox extends PureComponent {
       },
       text: "Login with your email & password",
       textColor: "grey",
+      apiCallInProgress: false,
     };
     this.keyPress = this.keyPress.bind(this);
   }
@@ -36,9 +37,12 @@ export default class SignInBox extends PureComponent {
     if (emailValidation.error === true) return this.setState({ text: emailValidation.message, textColor: "red" });
     if (this.state.inputs.password <= 0) return this.setState({ text: "Password cannot be blank.", textColor: "red" });
     try {
+      this.setState({apiCallInProgress: true});
       await Authenticate.login(this.state.inputs);
     } catch {
       this.setState({ text: "Email or password incorrect.", textColor: "red" });
+    } finally {
+      this.setState({apiCallInProgress: false});
     }
   };
 
@@ -64,7 +68,7 @@ export default class SignInBox extends PureComponent {
             <TextInput placeholder="Password" type="password" name="password" onChange={this.handleInputChange} onKeyDown={this.keyPress} />
           </div>
           <div className={styles.continueBtnContainer}>
-            <ButtonPrimary text="Log In" width="262px" height="40px" textSize="0.8rem" onClick={this.handleButtonClick} />
+            <ButtonPrimary text="Log In" width="262px" height="40px" textSize="0.8rem" onClick={this.handleButtonClick} loading={this.state.apiCallInProgress} />
           </div>
           <div className={styles.lineBreakContainer}>
             <hr />

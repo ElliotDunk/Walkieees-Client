@@ -46,7 +46,7 @@ export default class MyWalksFrame extends Component {
           <ManyWalksFrame walksArr={this.state.walksData !== null ? this.state.walksData.slice(this.state.walksPerFrame * this.state.currentFrame - this.state.walksPerFrame, this.state.walksPerFrame * this.state.currentFrame) : null} />
           <div style={{ display: this.state.walksData.length > 0 ? "none" : "block" }} className={styles.noWalksContainer}>
             <h3>You have't created any walks yet.</h3>
-            <ButtonPrimary text="Create A Walk" />
+            <ButtonPrimary text="Create A Walk" onClick="/walks/create" />
           </div>
         </div>
         <div style={{ display: this.state.walksData.length > 0 ? "block" : "none" }}>

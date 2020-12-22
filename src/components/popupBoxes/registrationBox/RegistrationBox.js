@@ -22,6 +22,7 @@ export default class SignInBox extends Component {
       },
       text: "It's great to have you!",
       textColor: "grey",
+      apiCallInProgress: false,
     };
     this.keyPress = this.keyPress.bind(this);
   }
@@ -60,11 +61,14 @@ export default class SignInBox extends Component {
     if (confirmPasswordValidation.error === true) return this.setState({ text: confirmPasswordValidation.message, textColor: "red" });
     if (DOBValidation.error === true) return this.setState({ text: DOBValidation.message, textColor: "red" });
     if (termsValidation.error === true) return this.setState({ text: termsValidation.message, textColor: "red" });
+
     //Post registration if between 200 and 300
+    this.setState({apiCallInProgress: true});
     await Authenticate.register(this.state.inputs).catch((result) => {
-      console.log(result);
       if (result === 409) return this.setState({ text: "This email is already registered", textColor: "red" });
       if (result !== 201) return this.setState({ text: "Registration did not complete", textColor: "red" });
+    }).finally(() => {
+      this.setState({apiCallInProgress: false});
     });
   };
 
@@ -110,7 +114,7 @@ export default class SignInBox extends Component {
             <label htmlFor="marketingEmails">I agree to marketing emails</label>
           </div>
           <div className={styles.continueBtnContainer}>
-            <ButtonPrimary text="Continue" width="262px" height="40px" textSize="0.8rem" type="submit" onClick={this.handleButtonClick} />
+            <ButtonPrimary text="Continue" width="262px" height="40px" textSize="0.8rem" type="submit" onClick={this.handleButtonClick} loading={this.state.apiCallInProgress} />
           </div>
         </div>
       </div>

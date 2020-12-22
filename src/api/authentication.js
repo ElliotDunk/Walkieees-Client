@@ -4,7 +4,7 @@ import qs from "querystring";
 const AUTHENTICATE_URL_DEV = "https://localhost:8443/api/authenticate";
 const AUTHENTICATE_URL = "/api/authenticate";
 
-export default class Authenticate {
+export default class {
   static login(formData) {
     return new Promise((resolve, reject) => {
       axios
@@ -82,7 +82,6 @@ export default class Authenticate {
   }
 
   static linkFacebook() {
-    console.log("Facebook");
     return new Promise((resolve, reject) => {
       axios
         .put(`${AUTHENTICATE_URL_DEV}/link/facebook`, {
@@ -95,7 +94,6 @@ export default class Authenticate {
           resolve(response.status);
         })
         .catch((error) => {
-          console.log(error);
           reject(error);
         });
     });

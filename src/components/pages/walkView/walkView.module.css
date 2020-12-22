@@ -219,18 +219,29 @@
 }
 
 .contentContainer {
-  min-height: 500px;
+  width: calc(100% - 320px);
   padding: 0 20px;
 }
 
-.contentContainer p {
-  margin-bottom: 30px;
+@media only screen and (max-width: 750px) {
+  .contentContainer {
+    width: auto;
+  }
 }
 
-.contentContainer p strong {
-  font-size: 1.5rem;
-  font-weight: 500;
+.contentContainer h1,
+.contentContainer h2,
+.contentContainer h3,
+.contentContainer h4,
+.contentContainer h5 {
+  font-family: VisbyRoundCF;
+  font-weight: 300;
   color: #282cdd;
+}
+
+.contentContainer p {
+  line-height: 30px;
+  margin-bottom: 30px;
 }
 
 .mapContainer {
