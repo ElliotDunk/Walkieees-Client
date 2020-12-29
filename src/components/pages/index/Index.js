@@ -3,7 +3,7 @@ import WalksAPI from "../../../api/walks";
 import NavBar from "../../navBar/NavBar";
 import IndexMainVideo from "../../indexMainVideo/IndexMainVideo";
 import ContentTitle from "../../titles/contentTitle/ContentTitle";
-import BussinesesFrame from "../../businessesFrame/businessesFrame";
+import BusinessesFrame from "../../businessesFrame/businessesFrame";
 import WelfareFrame from "../../welfareFrame/WelfareFrame";
 import CutestDogFrame from "../../cutestDogFrame/CutestDogFrame";
 import RescueCenterFrame from "../../rescueCenterFrame/RescueCenterFrame";
@@ -57,7 +57,7 @@ export default class Index extends Component {
         </div>
         <ContentTitle text="Meet Local Dog Businesses" />
         <div className={styles.frameContainer}>
-          <BussinesesFrame />
+          <BusinessesFrame />
         </div>
         <div className={styles.fullFrameContainer}>
           <WelfareFrame />

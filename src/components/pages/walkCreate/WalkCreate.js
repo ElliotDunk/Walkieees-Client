@@ -132,7 +132,7 @@ export default class MyWalksFrame extends Component {
 
     if (this.state.imageArr.length <= 0) {
       this.setState({
-        errorMessage: "Please upload atleast 1 photo.",
+        errorMessage: "Please upload at least 1 photo.",
         errorColor: "red",
       });
       scroll();
@@ -273,7 +273,7 @@ export default class MyWalksFrame extends Component {
           </p>
           <div className={styles.multiLineInputContainer}>
             <Editor
-            initialValue="<h1>About This Walk</h1><p><em>Describe your walk walk in as much detail as possible such as location, type of terrain, activities, nearby amenities, etc. The above tool bar can be used to add headings, and style your description.</em></p>"
+            initialValue="<h1>About This Walk</h1><p><em>Describe your walk in as much detail as possible such as location, type of terrain, activities, nearby amenities, etc. The above tool bar can be used to add headings, and style your description.</em></p>"
               init={{
                 selector: "textarea#format-custom",
                 height: "100%",
